@@ -2,11 +2,14 @@
 	font-family: "Catamaran";
 	src: url("/fonts/Catamaran.ttf");
 }
-  
-*, *::before, *::after {
+
+*,
+*::before,
+*::after {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	line-height: 1;
 }
 
 /* colors */
@@ -14,7 +17,7 @@
 :root {
 	--white: #fff;
 	--black: #070d18;
-	--light-gray: #ededed;
+	--light-gray: #f8f8f8;
 	--dark-gray: #363636;
 	--red: #ca3e47;
 	--blue: #4f4fed;
@@ -23,7 +26,10 @@
 
 /* reset styles */
 
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
 	border: none;
 	outline: none;
 	color: var(--black);
@@ -48,17 +54,25 @@ body {
 /* font sizes */
 
 @media screen and (min-width: 480px) {
-	html { font-size: 1.1rem }
+	html {
+		font-size: 1.1rem
+	}
 }
 
 @media screen and (min-width: 768px) {
-	html { font-size: 1.2rem }
+	html {
+		font-size: 1.2rem
+	}
 }
 
 @media screen and (min-width: 1024px) {
-	html { font-size: 1.3rem }
+	html {
+		font-size: 1.3rem
+	}
 }
 
 @media screen and (min-width: 1200px) {
-	html { font-size: 1.4rem }
+	html {
+		font-size: 1.4rem
+	}
 }
