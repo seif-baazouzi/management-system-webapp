@@ -1,5 +1,5 @@
-<script>
-    import DefaultLayout from "../layouts/DefaultLayout.svelte";
+<script lang="ts">
+    import DefaultLayout from "~/layouts/DefaultLayout.svelte";
 </script>
 
 <DefaultLayout>

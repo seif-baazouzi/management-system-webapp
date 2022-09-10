@@ -6,8 +6,10 @@ import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
+import alias from "@rollup/plugin-alias"
 
 const production = !process.env.ROLLUP_WATCH;
+
 
 function serve() {
 	let server;
@@ -39,6 +41,14 @@ export default {
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
+		alias({
+			resolve: ['.svelte', '.ts'],
+			entries: [
+				{ find: '~/components', replacement: 'src/components' },
+				{ find: '~/layouts', replacement: 'src/layouts' },
+			]
+		}),
+
 		svelte({
 			preprocess: sveltePreprocess({ sourceMap: !production }),
 			compilerOptions: {

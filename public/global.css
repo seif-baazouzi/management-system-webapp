@@ -76,3 +76,65 @@ body {
 		font-size: 1.4rem
 	}
 }
+
+/* buttons styles */
+
+button {
+	font-size: .625rem;
+	font-weight: bold;
+	line-height: 1.5;
+
+	padding: .6em 1.25em;
+	border-radius: .5em;
+	display: inline-block;
+	border: .125em solid var(--light-gray);
+
+	color: var(--dark-gray);
+	background-color: var(--light-gray);
+
+	transition: .3s ease-out;
+	cursor: pointer;
+}
+
+button:hover {
+	opacity: .8;
+}
+
+button:disabled {
+	opacity: .75;
+	cursor: not-allowed;
+}
+
+button.block {
+	width: 100%;
+	display: block;
+}
+
+button.blue {
+	color: var(--light-gray);
+	background-color: var(--blue);
+	border: .125em solid var(--blue);
+}
+
+button.blue:hover {
+	opacity: 1;
+	color: var(--light-gray);
+	background-color: var(--dark-gray);
+	border: .125em solid var(--dark-gray);
+}
+
+/* links styles */
+
+.link {
+	margin: 1rem 0;
+	font-size: .75rem;
+	color: var(--dark-gray);
+}
+
+.link a {
+	font-weight: bold;
+}
+
+.link a:hover {
+	color: var(--black);
+}
