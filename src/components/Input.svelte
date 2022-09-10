@@ -1,12 +1,18 @@
 <script lang="ts">
     export let label = "";
     export let type = "text";
+    export let value = "";
     export let error = null;
 </script>
 
 <div class="input-box">
     <label for={label}>{label}</label>
-    <input id="label" {type} />
+
+    {#if type === "password"}
+        <input type="password" id={label} bind:value />
+    {:else}
+        <input type="text" id={label} bind:value />
+    {/if}
     {#if error}
         <span>{error}</span>
     {/if}
