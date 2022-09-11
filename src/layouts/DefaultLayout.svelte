@@ -11,7 +11,9 @@
     <div class="side-bar {sidebarClosed ? 'close' : ''}" />
     <div class="content {sidebarClosed ? 'full-width' : ''}">
         <div class="top-bar">
-            <span class="toggle-btn" on:click={toggle}>≡</span>
+            <div class="left-side">
+                <span class="toggle-btn" on:click={toggle}>≡</span>
+            </div>
         </div>
         <slot />
     </div>
@@ -28,12 +30,13 @@
 
     .side-bar {
         width: var(--side-bar-width);
-        max-width: 100%;
+        max-width: calc(100% - 2rem);
         height: 100vh;
         position: fixed;
         top: 0;
         left: 0;
         background-color: var(--light-gray);
+        z-index: 1;
     }
 
     .side-bar.close {
@@ -87,18 +90,36 @@
         transition: left 300ms ease-out, right 300ms ease-out;
     }
 
+    .top-bar .left-side {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container.revert .top-bar .left-side {
+        flex-direction: row-reverse;
+    }
+
     .toggle-btn {
-        font-size: 2rem;
+        font-size: 1.5rem;
         cursor: pointer;
+        transform: translateY(-0.025em);
     }
 
     @media screen and (max-width: 480px) {
         .content {
-            position: static;
+            position: relative;
+            width: 100%;
+            left: 0;
         }
 
         .content:not(.full-width) .top-bar {
-            left: var(--side-bar-width);
+            left: min(calc(100% - 1.75rem), var(--side-bar-width));
+        }
+
+        .container.revert .content:not(.full-width) .top-bar {
+            left: auto;
+            right: min(calc(100% - 1.75rem), var(--side-bar-width));
         }
     }
 </style>

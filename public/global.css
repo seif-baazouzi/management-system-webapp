@@ -49,6 +49,7 @@ body {
 	color: var(--black);
 	font-family: "Catamaran";
 	background-color: var(--white);
+	overflow-x: hidden;
 }
 
 /* font sizes */

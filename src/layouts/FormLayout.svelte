@@ -29,7 +29,7 @@
 
     .form-container {
         width: 100%;
-        height: calc(100vh - 4rem);
+        min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
