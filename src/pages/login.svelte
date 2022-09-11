@@ -5,6 +5,9 @@
     import FormLayout from "~/layouts/FormLayout.svelte";
 
     import { accountsService } from "~/config/index";
+    import getLang from "~/langs/";
+
+    const lang = getLang();
 
     let username = "";
     let password = "";
@@ -29,22 +32,22 @@
     }
 </script>
 
-<FormLayout title="Welcome Back" submit={login}>
+<FormLayout title={lang.welcome} submit={login}>
     <Input
         type="text"
-        label="Username"
+        label={lang.username}
         bind:value={username}
         error={errors.username}
     />
     <Input
         type="password"
-        label="Password"
+        label={lang.password}
         bind:value={password}
         error={errors.password}
     />
     <button class="block blue">Login</button>
 
     <div class="link" slot="extra">
-        Do not have an account? <a href="/#/signup">Create account</a>
+        {lang.doNotHaveAccount} <a href="/#/signup">{lang.createAccount}</a>
     </div>
 </FormLayout>
