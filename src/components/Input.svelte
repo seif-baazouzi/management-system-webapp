@@ -1,11 +1,13 @@
 <script lang="ts">
+    import { rightToLeft } from "~/store";
+
     export let label = "";
     export let type = "text";
     export let value = "";
     export let error = null;
 </script>
 
-<div class="input-box">
+<div class="input-box {$rightToLeft ? 'revert' : ''}">
     <label for={label}>{label}</label>
 
     {#if type === "password"}
@@ -22,6 +24,10 @@
     .input-box {
         width: 100%;
         margin-bottom: 0.5rem;
+    }
+
+    .input-box.revert {
+        text-align: right;
     }
 
     .input-box :is(label, input, span) {

@@ -1,11 +1,13 @@
 <script lang="ts">
+    import { rightToLeft } from "~/store";
+
     let sidebarClosed = false;
     function toggle() {
         sidebarClosed = !sidebarClosed;
     }
 </script>
 
-<div class="container">
+<div class="container {$rightToLeft ? 'revert' : ''}">
     <div class="side-bar {sidebarClosed ? 'close' : ''}" />
     <div class="content {sidebarClosed ? 'full-width' : ''}">
         <div class="top-bar">
@@ -38,6 +40,15 @@
         left: -100%;
     }
 
+    .container.revert .side-bar {
+        right: 0;
+        left: unset;
+    }
+
+    .container.revert .side-bar.close {
+        right: -100%;
+    }
+
     .content {
         width: calc(100% - var(--side-bar-width));
         padding-top: var(--top-bar-height);
@@ -51,18 +62,29 @@
         left: 0;
     }
 
+    .container.revert .content {
+        left: unset;
+    }
+
     .top-bar {
         width: 100%;
         height: var(--top-bar-height);
         position: absolute;
         top: 0;
         left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .container.revert .top-bar {
+        flex-direction: row-reverse;
     }
 
     .side-bar,
     .content,
     .top-bar {
-        transition: left 300ms ease-out;
+        transition: left 300ms ease-out, right 300ms ease-out;
     }
 
     .toggle-btn {
