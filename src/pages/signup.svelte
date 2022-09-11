@@ -4,7 +4,7 @@
     import Input from "~/components/Input.svelte";
     import FormLayout from "~/layouts/FormLayout.svelte";
 
-    import { accountsService } from "~/config/index.ts";
+    import { accountsService } from "~/config/index";
 
     let username = "";
     let password = "";
