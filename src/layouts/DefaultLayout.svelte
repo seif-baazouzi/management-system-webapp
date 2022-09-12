@@ -1,11 +1,19 @@
 <script lang="ts">
+    import { onMount } from "svelte";
+
     import Navigation from "~/components/Navigation.svelte";
     import Workspaces from "~/components/workspaces/List.svelte";
     import { rightToLeft } from "~/store";
 
     let sidebarClosed = false;
+
+    onMount(() => {
+        sidebarClosed = localStorage.getItem("sidebarClosed") === "true";
+    });
+
     function toggle() {
         sidebarClosed = !sidebarClosed;
+        localStorage.setItem("sidebarClosed", sidebarClosed.toString());
     }
 </script>
 
@@ -110,7 +118,7 @@
     .toggle-btn {
         font-size: 1.5rem;
         cursor: pointer;
-        transform: translateY(-0.025em);
+        transform: translateY(-0.0125em);
         user-select: none;
     }
 
