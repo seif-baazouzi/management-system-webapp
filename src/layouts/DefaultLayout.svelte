@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Workspaces from "~/components/workspaces/List.svelte";
     import { rightToLeft } from "~/store";
 
     let sidebarClosed = false;
@@ -8,7 +9,9 @@
 </script>
 
 <div class="container {$rightToLeft ? 'revert' : ''}">
-    <div class="side-bar {sidebarClosed ? 'close' : ''}" />
+    <div class="side-bar {sidebarClosed ? 'close' : ''}">
+        <Workspaces />
+    </div>
     <div class="content {sidebarClosed ? 'full-width' : ''}">
         <div class="top-bar">
             <div class="left-side">
@@ -32,10 +35,12 @@
         width: var(--side-bar-width);
         max-width: calc(100% - 2rem);
         height: 100vh;
+        padding: 0.25rem;
         position: fixed;
         top: 0;
         left: 0;
         background-color: var(--light-gray);
+        overflow-y: auto;
         z-index: 1;
     }
 

@@ -7,4 +7,5 @@ export default {
     createAccount: "Create Account",
     joinUs: "Join Us",
     haveAccount: "Have an account?",
+    workspaces: "workspaces",
 }
