@@ -1,11 +1,13 @@
 <script lang="ts">
-    import { children } from "svelte/internal";
+    import { push } from "svelte-spa-router";
 
     export let w;
 </script>
 
 <details>
-    <summary>{w.workspace}</summary>
+    <summary on:click={() => push(`/workspace/${w.workspaceID}`)}
+        >{w.workspace}</summary
+    >
     <div class="children">
         {#each w.children as child}
             <svelte:self w={child} />
@@ -19,6 +21,7 @@
         font-size: 0.75rem;
         padding: 0.125rem;
         text-transform: capitalize;
+        cursor: pointer;
     }
 
     summary::marker {
