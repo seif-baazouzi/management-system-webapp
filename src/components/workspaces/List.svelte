@@ -6,20 +6,21 @@
     import parseWorkspaces from "~/utils/parse-workspaces";
     import Item from "./Item.svelte";
     import getLang from "~/langs/";
+    import { workspacesList } from "~/store";
 
     const lang = getLang();
 
-    let workspaces = [];
-
     onMount(async () => {
         const data = await ajax.get(`${workspacesService}/api/v1/workspaces`);
-        workspaces = parseWorkspaces(data.workspaces);
+        console.log(data.workspaces);
+
+        $workspacesList = data.workspaces;
     });
 </script>
 
 <h6>{lang.workspaces}</h6>
 <div class="workspaces-list">
-    {#each workspaces as w}
+    {#each parseWorkspaces($workspacesList) as w}
         <Item {w} />
     {/each}
 </div>

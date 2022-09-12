@@ -6,6 +6,8 @@
     import ajax from "~/utils/ajax";
     import Popup from "./Popup.svelte";
 
+    import { workspacesList } from "~/store";
+
     const dispatch = createEventDispatcher();
     const close = () => dispatch("close");
 
@@ -24,6 +26,15 @@
         );
 
         if (res.message === "success") {
+            $workspacesList = [
+                ...$workspacesList,
+                {
+                    workspaceID: res.workspaceID,
+                    workspace,
+                    parentWorkspace: "00000000-0000-0000-0000-000000000000",
+                },
+            ];
+
             workspace = "";
             close();
         } else {
