@@ -23,6 +23,8 @@
 	--red: #ca3e47;
 	--blue: #4f4fed;
 	--yellow: #ebc999;
+	--popup-bg: rgba(255, 255, 255, .75);
+	--shadow: .0125rem .0125rem .075rem rgba(0, 0, 0, .25);
 }
 
 /* reset styles */

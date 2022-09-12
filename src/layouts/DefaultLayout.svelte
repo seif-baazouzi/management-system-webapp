@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
 
     import Navigation from "~/components/Navigation.svelte";
-    import Workspaces from "~/components/workspaces/List.svelte";
+    import SideBar from "~/components/SideBar.svelte";
     import { rightToLeft } from "~/store";
 
     let sidebarClosed = false;
@@ -19,7 +19,7 @@
 
 <div class="container {$rightToLeft ? 'revert' : ''}">
     <div class="side-bar {sidebarClosed ? 'close' : ''}">
-        <Workspaces />
+        <SideBar />
     </div>
     <div class="content {sidebarClosed ? 'full-width' : ''}">
         <div class="top-bar">

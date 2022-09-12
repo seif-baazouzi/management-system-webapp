@@ -46,6 +46,7 @@ export default {
 			entries: [
 				{ find: '~/components', replacement: 'src/components' },
 				{ find: '~/layouts', replacement: 'src/layouts' },
+				{ find: '~/popups', replacement: 'src/popups' },
 				{ find: '~/config', replacement: 'src/config' },
 				{ find: '~/utils', replacement: 'src/utils' },
 				{ find: '~/', replacement: 'src/' },
