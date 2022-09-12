@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Navigation from "~/components/Navigation.svelte";
     import Workspaces from "~/components/workspaces/List.svelte";
     import { rightToLeft } from "~/store";
 
@@ -16,6 +17,7 @@
         <div class="top-bar">
             <div class="left-side">
                 <span class="toggle-btn" on:click={toggle}>≡</span>
+                <Navigation />
             </div>
         </div>
         <slot />
