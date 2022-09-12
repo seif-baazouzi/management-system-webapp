@@ -37,7 +37,7 @@
         width: var(--side-bar-width);
         max-width: calc(100% - 2rem);
         height: 100vh;
-        padding: 0.25rem;
+        padding: 0.5rem;
         position: fixed;
         top: 0;
         left: 0;
@@ -111,6 +111,7 @@
         font-size: 1.5rem;
         cursor: pointer;
         transform: translateY(-0.025em);
+        user-select: none;
     }
 
     @media screen and (max-width: 480px) {

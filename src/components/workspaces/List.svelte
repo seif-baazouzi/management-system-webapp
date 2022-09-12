@@ -29,5 +29,6 @@
         color: var(--gray);
         text-transform: uppercase;
         margin-bottom: 0.25rem;
+        letter-spacing: 0.075em;
     }
 </style>

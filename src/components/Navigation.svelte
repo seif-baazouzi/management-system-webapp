@@ -41,9 +41,13 @@
 </div>
 
 <style>
+    .arrows {
+        user-select: none;
+    }
+
     .arrow {
         font-size: 0.75rem;
-        padding: 0.25rem;
+        padding: 0.125rem;
         cursor: pointer;
         color: var(--gray);
     }
