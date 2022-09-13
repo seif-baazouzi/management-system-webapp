@@ -45,6 +45,7 @@ export default {
 			resolve: ['.svelte', '.ts'],
 			entries: [
 				{ find: '~/components', replacement: 'src/components' },
+				{ find: '~/interfaces', replacement: 'src/interfaces' },
 				{ find: '~/layouts', replacement: 'src/layouts' },
 				{ find: '~/popups', replacement: 'src/popups' },
 				{ find: '~/config', replacement: 'src/config' },

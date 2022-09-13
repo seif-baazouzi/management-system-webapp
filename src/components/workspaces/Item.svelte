@@ -1,7 +1,8 @@
 <script lang="ts">
     import { push } from "svelte-spa-router";
+    import type Workspace from "~/interfaces/workspace";
 
-    export let w;
+    export let w: Workspace;
 </script>
 
 <details>
