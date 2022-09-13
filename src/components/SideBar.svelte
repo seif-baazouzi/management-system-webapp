@@ -19,8 +19,16 @@
 {/if}
 
 <style>
+    .side-bar {
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        display: flex;
+    }
+
     .content {
         padding: 0.5rem;
+        flex: 1;
     }
 
     .add-workspace {

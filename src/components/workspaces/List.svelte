@@ -12,9 +12,7 @@
 
     onMount(async () => {
         const data = await ajax.get(`${workspacesService}/api/v1/workspaces`);
-        console.log(data.workspaces);
-
-        $workspacesList = data.workspaces;
+        $workspacesList = data.workspaces ?? [];
     });
 </script>
 
