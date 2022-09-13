@@ -28,6 +28,12 @@
                 <Navigation />
                 <slot name="title" />
             </div>
+            <div class="menu" tabindex="0">
+                <span>…</span>
+                <div class="drop-down">
+                    <slot name="menu" />
+                </div>
+            </div>
         </div>
         <slot />
     </div>
@@ -121,6 +127,33 @@
         cursor: pointer;
         transform: translateY(-0.0125em);
         user-select: none;
+    }
+
+    .menu {
+        position: relative;
+    }
+
+    .menu span {
+        display: inline-block;
+        padding: 0 1rem;
+        font-size: 2rem;
+        user-select: none;
+        transform: translateY(-0.25em);
+        cursor: pointer;
+    }
+
+    .menu .drop-down {
+        position: absolute;
+        top: 0.5rem;
+        right: 1rem;
+        border-radius: 0.5rem;
+        display: none;
+        background-color: var(--white);
+        box-shadow: var(--shadow);
+    }
+
+    .menu:focus-within .drop-down {
+        display: block;
     }
 
     @media screen and (max-width: 480px) {

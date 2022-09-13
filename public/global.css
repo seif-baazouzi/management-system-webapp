@@ -142,3 +142,26 @@ button.blue:hover {
 .link a:hover {
 	color: var(--black);
 }
+
+/* menu styles */
+
+.menu-item {
+	width: fit-content;
+	min-width: 5rem;
+	margin: .25em;
+	padding: .5em;
+	font-size: .9rem;
+	font-weight: bold;
+	border-radius: .5rem;
+	text-transform: capitalize;
+	transition: background .3s ease-out;
+	cursor: pointer;
+}
+
+.menu-item.red {
+	color: var(--red);
+}
+
+.menu-item:hover {
+	background-color: var(--light-gray);
+}

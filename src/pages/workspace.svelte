@@ -5,6 +5,7 @@
     import type Workspace from "~/interfaces/workspace";
     import Children from "~/components/workspaces/Children.svelte";
     import LinksChain from "~/components/LinksChain.svelte";
+    import UpdateWorkspacePopup from "~/popups/UpdateWorkspacePopup.svelte";
 
     export let params: { workspaceID: string };
     let workspace: Workspace = null;
@@ -14,6 +15,8 @@
             (w) => w.workspaceID === params.workspaceID
         )[0];
     });
+
+    let popup: string = null;
 </script>
 
 <svelte:head>
@@ -30,6 +33,13 @@
                 },
             ]}
         />
+    </div>
+
+    <div slot="menu">
+        <div class="menu-item" on:click={() => (popup = "edit")}>edit</div>
+        <div class="menu-item red" on:click={() => (popup = "delete")}>
+            delete
+        </div>
     </div>
 
     <div class="container">
@@ -50,6 +60,14 @@
         {/if}
     </div>
 </DefaultLayout>
+
+{#if popup === "edit"}
+    <UpdateWorkspacePopup
+        workspaceID={params.workspaceID}
+        workspace={workspace?.workspace}
+        on:close={() => (popup = null)}
+    />
+{/if}
 
 <style>
     .container {
