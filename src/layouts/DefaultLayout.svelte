@@ -26,6 +26,7 @@
             <div class="left-side">
                 <span class="toggle-btn" on:click={toggle}>≡</span>
                 <Navigation />
+                <slot name="title" />
             </div>
         </div>
         <slot />
@@ -108,6 +109,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        gap: 0.25rem;
     }
 
     .container.revert .top-bar .left-side {

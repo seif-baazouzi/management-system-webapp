@@ -4,6 +4,7 @@
     import { workspacesList } from "~/store";
     import type Workspace from "~/interfaces/workspace";
     import Children from "~/components/workspaces/Children.svelte";
+    import LinksChain from "~/components/LinksChain.svelte";
 
     export let params: { workspaceID: string };
     let workspace: Workspace = null;
@@ -20,6 +21,17 @@
 </svelte:head>
 
 <DefaultLayout>
+    <div slot="title">
+        <LinksChain
+            links={[
+                {
+                    link: `#/workspace/${workspace?.workspaceID}`,
+                    content: workspace?.workspace,
+                },
+            ]}
+        />
+    </div>
+
     <div class="container">
         {#if workspace}
             <h1>{workspace.workspace}</h1>
