@@ -6,7 +6,7 @@
 </script>
 
 <details>
-    <summary on:click={() => push(`/workspace/${w.workspace}`)}
+    <summary on:click={() => push(`/workspace/${w.workspaceID}`)}
         >{w.workspace}</summary
     >
     <div class="children">
