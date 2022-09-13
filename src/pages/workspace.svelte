@@ -5,7 +5,7 @@
     import type Workspace from "~/interfaces/workspace";
     import Children from "~/components/workspaces/Children.svelte";
     import LinksChain from "~/components/LinksChain.svelte";
-    import UpdateWorkspacePopup from "~/popups/UpdateWorkspacePopup.svelte";
+    import UpdateWorkspacePopup from "~/popups/workspaces/Update.svelte";
 
     export let params: { workspaceID: string };
     let workspace: Workspace = null;

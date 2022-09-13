@@ -4,7 +4,7 @@
     import Input from "~/components/Input.svelte";
     import { workspacesService } from "~/config";
     import ajax from "~/utils/ajax";
-    import Popup from "./Popup.svelte";
+    import Popup from "../Popup.svelte";
 
     import { workspacesList } from "~/store";
 

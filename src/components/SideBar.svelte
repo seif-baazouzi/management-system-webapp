@@ -1,6 +1,6 @@
 <script lang="ts">
     import Workspaces from "~/components/workspaces/List.svelte";
-    import AddWorkspacePopup from "~/popups/AddWorkspacePopup.svelte";
+    import AddWorkspacePopup from "~/popups/workspaces/Add.svelte";
 
     let showAddWorkspacePopup = false;
 </script>
