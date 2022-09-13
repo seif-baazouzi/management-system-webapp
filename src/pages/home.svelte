@@ -2,6 +2,10 @@
     import DefaultLayout from "~/layouts/DefaultLayout.svelte";
 </script>
 
+<svelte:head>
+    <title>Home</title>
+</svelte:head>
+
 <DefaultLayout>
     <h1>Home</h1>
     <p>

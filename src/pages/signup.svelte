@@ -32,6 +32,10 @@
     }
 </script>
 
+<svelte:head>
+    <title>Signup</title>
+</svelte:head>
+
 <FormLayout title={lang.joinUs} submit={login}>
     <Input
         type="text"

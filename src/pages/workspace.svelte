@@ -15,6 +15,10 @@
     });
 </script>
 
+<svelte:head>
+    <title>{workspace?.workspace} Workspace</title>
+</svelte:head>
+
 <DefaultLayout>
     <div class="container">
         {#if workspace}
