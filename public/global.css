@@ -120,7 +120,14 @@ button.blue {
 	border: .125em solid var(--blue);
 }
 
-button.blue:hover {
+
+button.red {
+	color: var(--light-gray);
+	background-color: var(--red);
+	border: .125em solid var(--red);
+}
+
+button:is(.blue, .red):hover {
 	opacity: 1;
 	color: var(--light-gray);
 	background-color: var(--dark-gray);

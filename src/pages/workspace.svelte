@@ -6,6 +6,7 @@
     import Children from "~/components/workspaces/Children.svelte";
     import LinksChain from "~/components/LinksChain.svelte";
     import UpdateWorkspacePopup from "~/popups/workspaces/Update.svelte";
+    import DeleteWorkspacePopup from "~/popups/workspaces/Delete.svelte";
 
     export let params: { workspaceID: string };
     let workspace: Workspace = null;
@@ -65,6 +66,13 @@
     <UpdateWorkspacePopup
         workspaceID={params.workspaceID}
         workspace={workspace?.workspace}
+        on:close={() => (popup = null)}
+    />
+{/if}
+
+{#if popup === "delete"}
+    <DeleteWorkspacePopup
+        workspaceID={params.workspaceID}
         on:close={() => (popup = null)}
     />
 {/if}

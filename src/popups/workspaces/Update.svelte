@@ -15,7 +15,7 @@
     export let workspace = "";
     let errors: any = {};
 
-    async function addWorkspace(event: any) {
+    async function updateWorkspace(event: any) {
         event?.preventDefault();
 
         const res = await ajax.put(
@@ -45,8 +45,8 @@
 
 <Popup on:close={close}>
     <div class="content">
-        <h3>Add new workspace</h3>
-        <form on:submit={addWorkspace}>
+        <h3>Update workspace</h3>
+        <form on:submit={updateWorkspace}>
             <Input
                 type="text"
                 label="Workspace"
