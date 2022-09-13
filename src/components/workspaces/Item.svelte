@@ -6,7 +6,9 @@
 </script>
 
 <details>
-    <summary on:click={() => push(`/workspace/${w.workspaceID}`)}
+    <summary
+        class={w.children?.length === 0 ? "no-children" : ""}
+        on:click={() => push(`/workspace/${w.workspaceID}`)}
         >{w.workspace}</summary
     >
     <div class="children">
@@ -27,6 +29,10 @@
 
     summary::marker {
         color: var(--gray);
+    }
+
+    summary.no-children::marker {
+        content: "";
     }
 
     .children {
