@@ -20,7 +20,6 @@
         {#if workspace}
             <h1>{workspace.workspace}</h1>
             <div class="content">
-                <Children workspaceID={params.workspaceID} />
                 <div class="links">
                     <a href="#/workspace/{workspace.workspaceID}/todos">Todos</a
                     >
@@ -28,6 +27,7 @@
                     >
                     <a href="#/workspace/{workspace.workspaceID}/logs">Logs</a>
                 </div>
+                <Children workspaceID={params.workspaceID} />
             </div>
         {:else}
             <Error title="404 Error" message="Workspace not found." />
@@ -51,14 +51,20 @@
     .content {
         width: 100%;
         margin-top: 2rem;
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
+    }
+
+    @media (min-width: 768px) {
+        .content {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
     }
 
     .links {
         display: flex;
         flex-direction: column;
+        margin-bottom: 1rem;
     }
 
     .links a {
