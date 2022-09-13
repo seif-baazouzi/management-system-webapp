@@ -6,7 +6,9 @@
 </script>
 
 <div class="side-bar">
-    <Workspaces />
+    <div class="content">
+        <Workspaces />
+    </div>
     <div class="add-workspace" on:click={() => (showAddWorkspacePopup = true)}>
         <span>+</span> New Workspace
     </div>
@@ -17,20 +19,25 @@
 {/if}
 
 <style>
+    .content {
+        padding: 0.5rem;
+    }
+
     .add-workspace {
         width: 100%;
-        position: absolute;
+        position: sticky;
         bottom: 0;
         left: 0;
         color: var(--gray);
         font-size: 0.75rem;
         font-weight: bold;
         padding: 0.5rem 1rem;
-        border-top: 0.0125em solid var(--gray);
+        border-top: 0.025em solid var(--gray);
         cursor: pointer;
         user-select: none;
         transition: color 0.3s ease-out;
         font-weight: bold;
+        background-color: var(--light-gray);
     }
 
     .add-workspace:hover {

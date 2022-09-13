@@ -45,7 +45,6 @@
         width: var(--side-bar-width);
         max-width: calc(100% - 2rem);
         height: 100vh;
-        padding: 0.5rem;
         position: fixed;
         top: 0;
         left: 0;
