@@ -5,3 +5,6 @@ export const lang = writable("en");
 export const rightToLeft = writable(false);
 
 export const workspacesList = writable([] as Workspace[]);
+
+export const prevActive = writable(false);
+export const nextActive = writable(false);
