@@ -1,7 +1,7 @@
 <script lang="ts">
     import { createEventDispatcher } from "svelte";
 
-    import Input from "~/components/Input.svelte";
+    import Input from "~/components/inputs/Input.svelte";
     import { workspacesService } from "~/config";
     import ajax from "~/utils/ajax";
     import Popup from "../Popup.svelte";

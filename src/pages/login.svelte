@@ -1,7 +1,7 @@
 <script lang="ts">
     import { push } from "svelte-spa-router";
 
-    import Input from "~/components/Input.svelte";
+    import Input from "~/components/inputs/Input.svelte";
     import FormLayout from "~/layouts/FormLayout.svelte";
 
     import { accountsService } from "~/config/index";
