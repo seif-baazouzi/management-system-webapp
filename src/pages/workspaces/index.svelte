@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="page-container">
         {#if workspace}
             <h1>{workspace.workspace}</h1>
             <div class="content">
@@ -78,18 +78,6 @@
 {/if}
 
 <style>
-    .container {
-        width: 100%;
-        max-width: 1200px;
-        padding: 1rem;
-        margin: 0 auto;
-    }
-
-    .container > h1 {
-        font-size: 3rem;
-        text-transform: capitalize;
-    }
-
     .content {
         width: 100%;
         margin-top: 2rem;
