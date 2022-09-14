@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { beforeUpdate } from "svelte";
+
     import DefaultLayout from "~/layouts/DefaultLayout.svelte";
     import Error from "~/components/Error.svelte";
     import { workspacesList } from "~/store";
@@ -11,10 +13,12 @@
     export let params: { workspaceID: string };
     let workspace: Workspace = null;
 
-    workspacesList.subscribe(() => {
-        workspace = $workspacesList.filter(
-            (w) => w.workspaceID === params.workspaceID
-        )[0];
+    beforeUpdate(() => {
+        workspacesList.subscribe((workspaces) => {
+            workspace = workspaces.filter(
+                (w) => w.workspaceID === params.workspaceID
+            )[0];
+        });
     });
 
     let popup: string = null;

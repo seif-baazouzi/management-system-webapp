@@ -1,8 +1,8 @@
 <script lang="ts">
     import { prevActive, nextActive } from "~/store";
 
-    const prev = () => prevActive && window.history.back();
-    const next = () => nextActive && window.history.forward();
+    const prev = () => $prevActive && window.history.back();
+    const next = () => $nextActive && window.history.forward();
 </script>
 
 <div class="arrows">

@@ -31,8 +31,6 @@
 		const oldURL = lastUrl;
 		const newURL = event.detail.location;
 
-		console.log(newURL);
-
 		// go back
 		if (newURL === lastBackwardUrl) {
 			backwardStack.pop();
