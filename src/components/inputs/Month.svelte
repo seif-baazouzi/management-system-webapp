@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { range } from "~/utils";
+    import { formatMonth, range } from "~/utils";
 
     const date = new Date();
 
@@ -7,7 +7,7 @@
     export let year: number = date.getFullYear();
 
     export let value = "";
-    const setValue = () => (value = `${year}-${month}`);
+    const setValue = () => (value = formatMonth(month, year));
     setValue();
 </script>
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { beforeUpdate } from "svelte";
+    import { onMount } from "svelte";
 
     import DefaultLayout from "~/layouts/DefaultLayout.svelte";
     import Error from "~/components/Error.svelte";
@@ -10,6 +10,8 @@
     import { todosService } from "~/config";
     import Month from "~/components/inputs/Month.svelte";
     import TodosList from "~/components/todos/List.svelte";
+    import AddTodoPopup from "~/popups/todos/Add.svelte";
+    import { formatMonth } from "~/utils";
 
     export let params: { workspaceID: string };
     let workspace: Workspace = null;
@@ -20,10 +22,12 @@
         )[0];
     });
 
-    let month = "";
+    let month = formatMonth();
     let todos = {};
 
-    beforeUpdate(async () => {
+    let popup = true;
+
+    onMount(async () => {
         const res = await ajax.get(
             `${todosService}/api/v1/todos/${params.workspaceID}/month/${month}`
         );
@@ -52,6 +56,10 @@
         />
     </div>
 
+    <div slot="menu">
+        <div class="menu-item" on:click={() => (popup = true)}>Add todo</div>
+    </div>
+
     <div class="page-container">
         {#if workspace}
             <h1>Todos</h1>
@@ -64,3 +72,10 @@
         {/if}
     </div>
 </DefaultLayout>
+
+{#if popup}
+    <AddTodoPopup
+        workspaceID={params.workspaceID}
+        on:close={() => (popup = false)}
+    />
+{/if}

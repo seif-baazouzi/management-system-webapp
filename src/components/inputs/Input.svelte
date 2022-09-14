@@ -12,6 +12,8 @@
 
     {#if type === "password"}
         <input type="password" id={label} bind:value />
+    {:else if type === "date"}
+        <input type="date" id={label} bind:value />
     {:else}
         <input type="text" id={label} bind:value />
     {/if}
