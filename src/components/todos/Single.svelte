@@ -9,7 +9,9 @@
         <input type="checkbox" bind:checked={todo.done} />
         {todo.title}
     </h3>
-    <p>{todo.body}</p>
+    {#if todo.body}
+        <p>{todo.body}</p>
+    {/if}
 </div>
 
 <style>

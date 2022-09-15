@@ -81,7 +81,7 @@
             <div class="content">
                 <Month
                     bind:value={month}
-                    style="position: absolute; right: 0; z-index: 1"
+                    style="position: absolute; right: 0; z-index: 10"
                 />
                 <TodosList {todos} />
             </div>

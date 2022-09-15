@@ -24,5 +24,6 @@
         position: sticky;
         top: 2rem;
         background-color: var(--white);
+        z-index: 1;
     }
 </style>

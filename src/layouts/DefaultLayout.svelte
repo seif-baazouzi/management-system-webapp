@@ -57,7 +57,7 @@
         left: 0;
         background-color: var(--light-gray);
         overflow-y: auto;
-        z-index: 1;
+        z-index: 100;
     }
 
     .side-bar.close {
@@ -165,6 +165,7 @@
         }
 
         .content:not(.full-width) .top-bar {
+            position: fixed;
             left: min(calc(100% - 1.75rem), var(--side-bar-width));
         }
 
