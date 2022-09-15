@@ -10,6 +10,8 @@
     const close = () => dispatch("close");
 
     export let workspaceID: string;
+    export let createdTodo = false;
+
     let title = "";
     let body = "";
     let startingDate = new Date().toISOString().split("T")[0];
@@ -26,11 +28,12 @@
                 title,
                 body,
                 startingDate: new Date(startingDate),
-                endingDate,
+                endingDate: endingDate ? new Date(endingDate) : null,
             }
         );
 
         if (res.message === "success") {
+            createdTodo = true;
             close();
         } else {
             errors = res;
