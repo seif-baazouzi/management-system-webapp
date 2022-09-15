@@ -7,11 +7,13 @@
     export let year: number = date.getFullYear();
 
     export let value = "";
+    export let style = "";
+
     const setValue = () => (value = formatMonth(month, year));
     setValue();
 </script>
 
-<div class="input">
+<div class="input" {style}>
     <select bind:value={month} on:change={setValue}>
         {#each range(1, 13) as m}
             <option value={m}>{m}</option>

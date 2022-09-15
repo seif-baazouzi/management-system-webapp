@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { afterUpdate, onMount } from "svelte";
+    import { beforeUpdate, onMount } from "svelte";
 
     import DefaultLayout from "~/layouts/DefaultLayout.svelte";
     import Error from "~/components/Error.svelte";
@@ -30,12 +30,17 @@
 
     onMount(getTodos);
 
-    afterUpdate(() => {
+    beforeUpdate(() => {
         if (createdTodo) {
             getTodos();
             createdTodo = false;
         }
     });
+
+    $: {
+        month;
+        getTodos();
+    }
 
     async function getTodos() {
         const res = await ajax.get(
@@ -74,7 +79,10 @@
         {#if workspace}
             <h1>Todos</h1>
             <div class="content">
-                <Month bind:value={month} />
+                <Month
+                    bind:value={month}
+                    style="position: absolute; right: 0; z-index: 1"
+                />
                 <TodosList {todos} />
             </div>
         {:else}
@@ -90,3 +98,10 @@
         on:close={() => (popup = false)}
     />
 {/if}
+
+<style>
+    .content {
+        margin-top: 1rem;
+        position: relative;
+    }
+</style>
