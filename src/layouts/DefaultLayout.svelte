@@ -75,7 +75,6 @@
 
     .content {
         width: calc(100% - var(--side-bar-width));
-        padding-top: var(--top-bar-height);
         position: relative;
         top: 0;
         left: var(--side-bar-width);
@@ -93,12 +92,14 @@
     .top-bar {
         width: 100%;
         height: var(--top-bar-height);
-        position: absolute;
+        position: sticky;
         top: 0;
         left: 0;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        background-color: var(--white);
+        z-index: 2;
     }
 
     .container.revert .top-bar {
