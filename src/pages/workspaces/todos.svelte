@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { beforeUpdate, onMount } from "svelte";
+    import { onMount } from "svelte";
 
     import DefaultLayout from "~/layouts/DefaultLayout.svelte";
     import Error from "~/components/Error.svelte";

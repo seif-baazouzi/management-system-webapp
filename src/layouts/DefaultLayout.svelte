@@ -5,6 +5,7 @@
     import SideBar from "~/components/SideBar.svelte";
     import { rightToLeft } from "~/store";
 
+    export let showMenu = true;
     let sidebarClosed = false;
 
     onMount(() => {
@@ -28,12 +29,14 @@
                 <Navigation />
                 <slot name="title" />
             </div>
-            <div class="menu" tabindex="0">
-                <span>…</span>
-                <div class="drop-down">
-                    <slot name="menu" />
+            {#if showMenu}
+                <div class="menu" tabindex="0">
+                    <span>…</span>
+                    <div class="drop-down">
+                        <slot name="menu" />
+                    </div>
                 </div>
-            </div>
+            {/if}
         </div>
         <slot />
     </div>
