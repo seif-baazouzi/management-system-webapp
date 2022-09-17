@@ -1,11 +1,11 @@
 <script lang="ts">
-    import { beforeUpdate } from "svelte";
-
     import { todosService } from "~/config";
     import type Todo from "~/interfaces/todo";
     import Update from "~/popups/todos/Update.svelte";
+    import Delete from "~/popups/todos/Delete.svelte";
     import ajax from "~/utils/ajax";
-    import Edit from "../icons/Edit.svelte";
+    import DeleteIcon from "~/components/icons/Delete.svelte";
+    import EditIcon from "~/components/icons/Edit.svelte";
 
     export let todo: Todo;
     let popup: string = null;
@@ -21,7 +21,11 @@
         <input type="checkbox" bind:checked={todo.done} />
         {todo.title}
         <div class="actions">
-            <Edit color="green" clickHandler={() => (popup = "update")} />
+            <EditIcon color="green" clickHandler={() => (popup = "update")} />
+            <DeleteIcon
+                color="var(--red)"
+                clickHandler={() => (popup = "delete")}
+            />
         </div>
     </h3>
     {#if todo.body}
@@ -31,6 +35,10 @@
 
 {#if popup === "update"}
     <Update bind:todo on:close={() => (popup = null)} />
+{/if}
+
+{#if popup === "delete"}
+    <Delete todoID={todo.todoID} on:close={() => (popup = null)} />
 {/if}
 
 <style>
