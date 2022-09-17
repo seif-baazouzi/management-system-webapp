@@ -1,7 +1,21 @@
 <script lang="ts">
+    import { beforeUpdate } from "svelte";
+
+    import { todosService } from "~/config";
     import type Todo from "~/interfaces/todo";
+    import ajax from "~/utils/ajax";
 
     export let todo: Todo;
+
+    beforeUpdate(updateTodo);
+
+    async function updateTodo() {
+        await ajax.put(
+            `${todosService}/api/v1/todos/${todo.todoID}`,
+            null,
+            todo
+        );
+    }
 </script>
 
 <div class="todo {todo.done ? 'done' : ''}">
