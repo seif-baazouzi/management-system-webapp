@@ -4,6 +4,7 @@
     import Input from "~/components/inputs/Input.svelte";
     import { todosService } from "~/config";
     import type Todo from "~/interfaces/todo";
+    import { refreshPage } from "~/store";
     import ajax from "~/utils/ajax";
     import Popup from "../Popup.svelte";
 
@@ -14,9 +15,8 @@
         !d ? null : new Date(d).toISOString().split("T")[0];
 
     export let todo: Todo;
-    let clone = todo;
-    clone.startingDate = formatDate(clone.startingDate);
-    clone.endingDate = formatDate(clone.endingDate);
+    todo.startingDate = formatDate(todo.startingDate);
+    todo.endingDate = formatDate(todo.endingDate);
 
     let errors: any = {};
 
@@ -27,17 +27,15 @@
             `${todosService}/api/v1/todos/${todo.todoID}`,
             null,
             {
-                title: clone.title,
-                body: clone.body,
-                startingDate: new Date(clone.startingDate),
-                endingDate: clone.endingDate
-                    ? new Date(clone.endingDate)
-                    : null,
+                title: todo.title,
+                body: todo.body,
+                startingDate: new Date(todo.startingDate),
+                endingDate: todo.endingDate ? new Date(todo.endingDate) : null,
             }
         );
 
         if (res.message === "success") {
-            todo = clone;
+            $refreshPage = true;
             close();
         } else {
             errors = res;
@@ -52,25 +50,25 @@
             <Input
                 type="text"
                 label="Title"
-                bind:value={clone.title}
+                bind:value={todo.title}
                 error={errors.title}
             />
             <Input
                 type="text"
                 label="Body"
-                bind:value={clone.body}
+                bind:value={todo.body}
                 error={errors.body}
             />
             <Input
                 type="date"
                 label="Starting Date"
-                bind:value={clone.startingDate}
+                bind:value={todo.startingDate}
                 error={errors.startingDate}
             />
             <Input
                 type="date"
                 label="Ending Date"
-                bind:value={clone.endingDate}
+                bind:value={todo.endingDate}
                 error={errors.endingDate}
             />
             <button class="blue block">Submit</button>

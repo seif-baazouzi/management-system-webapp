@@ -34,11 +34,11 @@
 </div>
 
 {#if popup === "update"}
-    <Update bind:todo on:close={() => (popup = null)} />
+    <Update {todo} on:close={() => (popup = null)} />
 {/if}
 
 {#if popup === "delete"}
-    <Delete todoID={todo.todoID} on:close={() => (popup = null)} />
+    <Delete {todo} on:close={() => (popup = null)} />
 {/if}
 
 <style>

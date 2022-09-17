@@ -1,6 +1,7 @@
 <script lang="ts">
     import { createEventDispatcher } from "svelte";
 
+    import { refreshPage } from "~/store";
     import Input from "~/components/inputs/Input.svelte";
     import { todosService } from "~/config";
     import ajax from "~/utils/ajax";
@@ -10,7 +11,6 @@
     const close = () => dispatch("close");
 
     export let workspaceID: string;
-    export let createdTodo = false;
 
     let title = "";
     let body = "";
@@ -33,7 +33,7 @@
         );
 
         if (res.message === "success") {
-            createdTodo = true;
+            $refreshPage = true;
             close();
         } else {
             errors = res;

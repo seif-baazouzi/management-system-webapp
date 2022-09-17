@@ -3,7 +3,7 @@
 
     import DefaultLayout from "~/layouts/DefaultLayout.svelte";
     import Error from "~/components/Error.svelte";
-    import { workspacesList } from "~/store";
+    import { refreshPage, workspacesList } from "~/store";
     import type Workspace from "~/interfaces/workspace";
     import LinksChain from "~/components/LinksChain.svelte";
     import ajax from "~/utils/ajax";
@@ -26,21 +26,20 @@
     let todos = {};
 
     let popup = false;
-    let createdTodo = false;
 
     onMount(getTodos);
-
-    beforeUpdate(() => {
-        if (createdTodo) {
-            getTodos();
-            createdTodo = false;
-        }
-    });
 
     $: {
         month;
         getTodos();
     }
+
+    refreshPage.subscribe(() => {
+        if ($refreshPage) {
+            getTodos();
+            $refreshPage = false;
+        }
+    });
 
     async function getTodos() {
         const res = await ajax.get(
@@ -94,7 +93,6 @@
 {#if popup}
     <AddTodoPopup
         workspaceID={params.workspaceID}
-        bind:createdTodo
         on:close={() => (popup = false)}
     />
 {/if}

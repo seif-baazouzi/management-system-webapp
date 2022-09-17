@@ -1,20 +1,22 @@
 <script lang="ts">
     import { createEventDispatcher } from "svelte";
 
+    import { refreshPage } from "~/store";
     import { todosService } from "~/config";
+    import type Todo from "~/interfaces/todo";
     import ajax from "~/utils/ajax";
     import Popup from "../Popup.svelte";
 
     const dispatch = createEventDispatcher();
     const close = () => dispatch("close");
 
-    export let todoID: string;
+    export let todo: Todo;
 
     async function deleteTodo(event: any) {
         event?.preventDefault();
 
-        const res = await ajax.del(`${todosService}/api/v1/todos/${todoID}`);
-
+        await ajax.del(`${todosService}/api/v1/todos/${todo.todoID}`);
+        $refreshPage = true;
         close();
     }
 </script>

@@ -8,3 +8,5 @@ export const workspacesList = writable([] as Workspace[]);
 
 export const prevActive = writable(false);
 export const nextActive = writable(false);
+
+export const refreshPage = writable(false);
