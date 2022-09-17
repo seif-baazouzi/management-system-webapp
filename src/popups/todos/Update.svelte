@@ -3,37 +3,41 @@
 
     import Input from "~/components/inputs/Input.svelte";
     import { todosService } from "~/config";
+    import type Todo from "~/interfaces/todo";
     import ajax from "~/utils/ajax";
     import Popup from "../Popup.svelte";
 
     const dispatch = createEventDispatcher();
     const close = () => dispatch("close");
 
-    export let workspaceID: string;
-    export let createdTodo = false;
+    const formatDate = (d: string) =>
+        !d ? null : new Date(d).toISOString().split("T")[0];
 
-    let title = "";
-    let body = "";
-    let startingDate = new Date().toISOString().split("T")[0];
-    let endingDate = null;
+    export let todo: Todo;
+    let clone = todo;
+    clone.startingDate = formatDate(clone.startingDate);
+    clone.endingDate = formatDate(clone.endingDate);
+
     let errors: any = {};
 
-    async function addTodo(event: any) {
+    async function updateTodo(event: any) {
         event?.preventDefault();
 
-        const res = await ajax.post(
-            `${todosService}/api/v1/todos/${workspaceID}`,
+        const res = await ajax.put(
+            `${todosService}/api/v1/todos/${todo.todoID}`,
             null,
             {
-                title,
-                body,
-                startingDate: new Date(startingDate),
-                endingDate: endingDate ? new Date(endingDate) : null,
+                title: clone.title,
+                body: clone.body,
+                startingDate: new Date(clone.startingDate),
+                endingDate: clone.endingDate
+                    ? new Date(clone.endingDate)
+                    : null,
             }
         );
 
         if (res.message === "success") {
-            createdTodo = true;
+            todo = clone;
             close();
         } else {
             errors = res;
@@ -44,29 +48,29 @@
 <Popup on:close={close}>
     <div class="content">
         <h3>Add new todo</h3>
-        <form on:submit={addTodo}>
+        <form on:submit={updateTodo}>
             <Input
                 type="text"
                 label="Title"
-                bind:value={title}
+                bind:value={clone.title}
                 error={errors.title}
             />
             <Input
                 type="text"
                 label="Body"
-                bind:value={body}
+                bind:value={clone.body}
                 error={errors.body}
             />
             <Input
                 type="date"
                 label="Starting Date"
-                bind:value={startingDate}
+                bind:value={clone.startingDate}
                 error={errors.startingDate}
             />
             <Input
                 type="date"
                 label="Ending Date"
-                bind:value={endingDate}
+                bind:value={clone.endingDate}
                 error={errors.endingDate}
             />
             <button class="blue block">Submit</button>
