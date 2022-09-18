@@ -77,7 +77,7 @@
     <div class="page-container">
         {#if workspace}
             <h1>Todos</h1>
-            <div class="content">
+            <div class="page-content">
                 <Month
                     bind:value={month}
                     style="position: absolute; right: 0; z-index: 10"
@@ -96,10 +96,3 @@
         on:close={() => (popup = false)}
     />
 {/if}
-
-<style>
-    .content {
-        margin-top: 1rem;
-        position: relative;
-    }
-</style>

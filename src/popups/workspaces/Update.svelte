@@ -44,7 +44,7 @@
 </script>
 
 <Popup on:close={close}>
-    <div class="content">
+    <div class="popup-content">
         <h3>Update workspace</h3>
         <form on:submit={updateWorkspace}>
             <Input
@@ -57,15 +57,3 @@
         </form>
     </div>
 </Popup>
-
-<style>
-    .content {
-        width: 480px;
-        max-width: 100%;
-    }
-
-    h3 {
-        text-align: center;
-        margin-bottom: 2rem;
-    }
-</style>

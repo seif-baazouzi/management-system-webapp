@@ -1,8 +1,8 @@
 <script lang="ts">
     import { onMount } from "svelte";
 
-    import Navigation from "~/components/Navigation.svelte";
     import SideBar from "~/components/SideBar.svelte";
+    import TopBar from "~/components/TopBar.svelte";
     import { rightToLeft } from "~/store";
 
     export let showMenu = true;
@@ -23,21 +23,10 @@
         <SideBar />
     </div>
     <div class="content {sidebarClosed ? 'full-width' : ''}">
-        <div class="top-bar">
-            <div class="left-side">
-                <span class="toggle-btn" on:click={toggle}>≡</span>
-                <Navigation />
-                <slot name="title" />
-            </div>
-            {#if showMenu}
-                <div class="menu" tabindex="0">
-                    <span>…</span>
-                    <div class="drop-down">
-                        <slot name="menu" />
-                    </div>
-                </div>
-            {/if}
-        </div>
+        <TopBar bind:showMenu {toggle} {sidebarClosed}>
+            <slot name="menu" slot="menu" />
+            <slot name="title" slot="title" />
+        </TopBar>
         <slot />
     </div>
 </div>
@@ -92,72 +81,9 @@
         left: unset;
     }
 
-    .top-bar {
-        width: 100%;
-        height: var(--top-bar-height);
-        position: sticky;
-        top: 0;
-        left: 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background-color: var(--white);
-        z-index: 2;
-    }
-
-    .container.revert .top-bar {
-        flex-direction: row-reverse;
-    }
-
     .side-bar,
-    .content,
-    .top-bar {
+    .content {
         transition: left 300ms ease-out, right 300ms ease-out;
-    }
-
-    .top-bar .left-side {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.25rem;
-    }
-
-    .container.revert .top-bar .left-side {
-        flex-direction: row-reverse;
-    }
-
-    .toggle-btn {
-        font-size: 1.5rem;
-        cursor: pointer;
-        transform: translateY(-0.0125em);
-        user-select: none;
-    }
-
-    .menu {
-        position: relative;
-    }
-
-    .menu span {
-        display: inline-block;
-        padding: 0 1rem;
-        font-size: 2rem;
-        user-select: none;
-        transform: translateY(-0.25em);
-        cursor: pointer;
-    }
-
-    .menu .drop-down {
-        position: absolute;
-        top: 0.5rem;
-        right: 1rem;
-        border-radius: 0.5rem;
-        display: none;
-        background-color: var(--white);
-        box-shadow: var(--shadow);
-    }
-
-    .menu:focus-within .drop-down {
-        display: block;
     }
 
     @media screen and (max-width: 480px) {
@@ -165,16 +91,6 @@
             position: relative;
             width: 100%;
             left: 0;
-        }
-
-        .content:not(.full-width) .top-bar {
-            position: fixed;
-            left: min(calc(100% - 1.75rem), var(--side-bar-width));
-        }
-
-        .container.revert .content:not(.full-width) .top-bar {
-            left: auto;
-            right: min(calc(100% - 1.75rem), var(--side-bar-width));
         }
     }
 </style>

@@ -50,7 +50,7 @@
     <div class="page-container">
         {#if workspace}
             <h1>{workspace.workspace}</h1>
-            <div class="content">
+            <div class="page-content">
                 <div class="links">
                     <a href="#/workspace/{workspace.workspaceID}/todos">Todos</a
                     >
@@ -82,13 +82,8 @@
 {/if}
 
 <style>
-    .content {
-        width: 100%;
-        margin-top: 2rem;
-    }
-
     @media (min-width: 768px) {
-        .content {
+        .page-content {
             display: flex;
             align-items: flex-start;
             justify-content: space-between;

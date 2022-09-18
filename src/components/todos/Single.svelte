@@ -1,8 +1,8 @@
 <script lang="ts">
     import { todosService } from "~/config";
     import type Todo from "~/interfaces/todo";
-    import Update from "~/popups/todos/Update.svelte";
-    import Delete from "~/popups/todos/Delete.svelte";
+    import UpdatePopup from "~/popups/todos/Update.svelte";
+    import DeletePopup from "~/popups/todos/Delete.svelte";
     import ajax from "~/utils/ajax";
     import DeleteIcon from "~/components/icons/Delete.svelte";
     import EditIcon from "~/components/icons/Edit.svelte";
@@ -34,11 +34,11 @@
 </div>
 
 {#if popup === "update"}
-    <Update {todo} on:close={() => (popup = null)} />
+    <UpdatePopup {todo} on:close={() => (popup = null)} />
 {/if}
 
 {#if popup === "delete"}
-    <Delete {todo} on:close={() => (popup = null)} />
+    <DeletePopup {todo} on:close={() => (popup = null)} />
 {/if}
 
 <style>

@@ -173,7 +173,7 @@ button:is(.blue, .red):hover {
 	background-color: var(--light-gray);
 }
 
-/* containers styles */
+/* page styles */
 
 .page-container {
 	width: 100%;
@@ -185,4 +185,34 @@ button:is(.blue, .red):hover {
 .page-container h1 {
 	font-size: 3rem;
 	text-transform: capitalize;
+}
+
+.page-content {
+	margin-top: 1rem;
+	position: relative;
+}
+
+/* popups styles */
+
+.popup-content {
+	width: 480px;
+	max-width: 100%;
+}
+
+.popup-content h3 {
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+.popup-content-delete {
+	width: 520px;
+	max-width: 100%;
+}
+
+.popup-content-delete .buttons {
+	margin-top: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 0.5rem;
 }

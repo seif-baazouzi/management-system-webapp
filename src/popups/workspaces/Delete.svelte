@@ -32,7 +32,7 @@
 </script>
 
 <Popup on:close={close}>
-    <div class="content">
+    <div class="popup-content-delete">
         <h3>Are you sure you want yo delete this workspace!</h3>
         <div class="buttons">
             <button on:click={close}>Cancel</button>
@@ -40,18 +40,3 @@
         </div>
     </div>
 </Popup>
-
-<style>
-    .content {
-        width: 520px;
-        max-width: 100%;
-    }
-
-    .buttons {
-        margin-top: 2rem;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 0.5rem;
-    }
-</style>
