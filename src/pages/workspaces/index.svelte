@@ -86,7 +86,7 @@
                     >
                     <a href="#/workspace/{workspace.workspaceID}/logs">Logs</a>
                 </div>
-                <Children workspaceID={params.workspaceID} />
+                <Children workspaceID={workspace.workspaceID} />
             </div>
         {:else}
             <Error title="404 Error" message="Workspace not found." />
@@ -116,21 +116,9 @@
             align-items: flex-start;
             justify-content: space-between;
         }
-    }
 
-    .links {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 1rem;
-    }
-
-    .links a {
-        font-size: 1rem;
-        font-weight: bold;
-        padding: 0.25em;
-    }
-
-    .links a:hover {
-        text-decoration: underline;
+        .links {
+            width: 100%;
+        }
     }
 </style>
