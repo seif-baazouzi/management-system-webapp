@@ -10,6 +10,8 @@
     import UpdateWorkspacePopup from "~/popups/workspaces/Update.svelte";
     import DeleteWorkspacePopup from "~/popups/workspaces/Delete.svelte";
     import IconPicker from "~/components/IconPicker.svelte";
+    import ajax from "~/utils/ajax";
+    import { workspacesService } from "~/config";
 
     export let params: { workspaceID: string };
     let workspace: Workspace = null;
@@ -23,6 +25,25 @@
     });
 
     let popup: string = null;
+
+    $: {
+        (async () => {
+            await ajax.put(
+                `${workspacesService}/api/v1/workspaces/${workspace.workspaceID}`,
+                null,
+                {
+                    workspace: workspace.workspace,
+                    icon: workspace.icon,
+                }
+            );
+
+            $workspacesList = $workspacesList.map((w) => {
+                if (w.workspaceID === workspace.workspaceID)
+                    w.icon = workspace.icon;
+                return w;
+            });
+        })();
+    }
 </script>
 
 <svelte:head>
