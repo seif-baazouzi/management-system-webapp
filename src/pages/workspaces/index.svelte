@@ -11,7 +11,7 @@
     import DeleteWorkspacePopup from "~/popups/workspaces/Delete.svelte";
     import IconPicker from "~/components/IconPicker.svelte";
     import ajax from "~/utils/ajax";
-    import { workspacesService } from "~/config";
+    import { defaultIcon, workspacesService } from "~/config";
 
     export let params: { workspaceID: string };
     let workspace: Workspace = null;
@@ -21,6 +21,8 @@
             workspace = workspaces.filter(
                 (w) => w.workspaceID === params.workspaceID
             )[0];
+
+            if (workspace) workspace.icon = workspace.icon || defaultIcon;
         });
     });
 

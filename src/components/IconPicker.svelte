@@ -3,6 +3,7 @@
 
     export let selectedIcon = "";
     export let fontSize = "1rem";
+    export let onUpdate: Function = null;
 
     let search = "";
     let showBox = false;
@@ -27,6 +28,7 @@
                         on:click={() => {
                             selectedIcon = icon;
                             showBox = false;
+                            onUpdate && onUpdate(icon);
                         }}
                     >
                         {icon}
