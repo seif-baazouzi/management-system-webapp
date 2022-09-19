@@ -187,6 +187,12 @@ button:is(.blue, .red):hover {
 	text-transform: capitalize;
 }
 
+.page-container h1.has-icon {
+	display: flex;
+	align-items: center;
+	gap: .125em;
+}
+
 .page-container h1 .icon {
 	font-size: 1.75rem;
 	display: inline-block;

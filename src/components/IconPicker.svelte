@@ -40,6 +40,7 @@
 <style>
     .picker-container {
         position: relative;
+        z-index: 100;
     }
 
     p {
@@ -54,6 +55,7 @@
         left: 0;
         border-radius: 0.25rem;
         box-shadow: var(--shadow);
+        background-color: var(--white);
         display: none;
         overflow-y: auto;
     }

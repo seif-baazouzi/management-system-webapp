@@ -9,6 +9,7 @@
     import LinksChain from "~/components/LinksChain.svelte";
     import UpdateWorkspacePopup from "~/popups/workspaces/Update.svelte";
     import DeleteWorkspacePopup from "~/popups/workspaces/Delete.svelte";
+    import IconPicker from "~/components/IconPicker.svelte";
 
     export let params: { workspaceID: string };
     let workspace: Workspace = null;
@@ -49,7 +50,13 @@
 
     <div class="page-container">
         {#if workspace}
-            <h1>{workspace.icon} {workspace.workspace}</h1>
+            <h1 class="has-icon">
+                <IconPicker
+                    fontSize="1.75rem"
+                    bind:selectedIcon={workspace.icon}
+                />
+                {workspace.workspace}
+            </h1>
             <div class="page-content">
                 <div class="links">
                     <a href="#/workspace/{workspace.workspaceID}/todos">Todos</a
