@@ -34,7 +34,7 @@
             links={[
                 {
                     link: `#/workspace/${workspace?.workspaceID}`,
-                    content: workspace?.workspace,
+                    content: `${workspace?.icon} ${workspace?.workspace}`,
                 },
             ]}
         />
@@ -49,7 +49,7 @@
 
     <div class="page-container">
         {#if workspace}
-            <h1>{workspace.workspace}</h1>
+            <h1>{workspace.icon} {workspace.workspace}</h1>
             <div class="page-content">
                 <div class="links">
                     <a href="#/workspace/{workspace.workspaceID}/todos">Todos</a

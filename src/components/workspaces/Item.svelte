@@ -9,7 +9,7 @@
     <summary
         class={w.children?.length === 0 ? "no-children" : ""}
         on:click={() => push(`/workspace/${w.workspaceID}`)}
-        >{w.workspace}</summary
+        >{w.icon} {w.workspace}</summary
     >
     <div class="children">
         {#each w.children as child}

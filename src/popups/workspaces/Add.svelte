@@ -2,7 +2,7 @@
     import { createEventDispatcher } from "svelte";
 
     import Input from "~/components/inputs/Input.svelte";
-    import { workspacesService } from "~/config";
+    import { defaultIcon, workspacesService } from "~/config";
     import ajax from "~/utils/ajax";
     import Popup from "../Popup.svelte";
 
@@ -22,6 +22,7 @@
             null,
             {
                 workspace,
+                icon: defaultIcon,
             }
         );
 
@@ -31,6 +32,7 @@
                 {
                     workspaceID: res.workspaceID,
                     workspace,
+                    icon: defaultIcon,
                     parentWorkspace: "00000000-0000-0000-0000-000000000000",
                 },
             ];

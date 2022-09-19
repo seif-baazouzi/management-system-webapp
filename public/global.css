@@ -187,6 +187,13 @@ button:is(.blue, .red):hover {
 	text-transform: capitalize;
 }
 
+.page-container h1 .icon {
+	font-size: 1.75rem;
+	display: inline-block;
+	transform: translateY(-25%);
+	margin-right: .25em;
+}
+
 .page-content {
 	margin-top: 1rem;
 	position: relative;

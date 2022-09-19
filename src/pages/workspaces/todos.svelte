@@ -60,11 +60,11 @@
             links={[
                 {
                     link: `#/workspace/${workspace?.workspaceID}`,
-                    content: workspace?.workspace,
+                    content: `${workspace?.icon} ${workspace?.workspace}`,
                 },
                 {
                     link: `#/workspace/${workspace?.workspaceID}/todos`,
-                    content: "Todos",
+                    content: "📌 Todos",
                 },
             ]}
         />
@@ -76,7 +76,7 @@
 
     <div class="page-container">
         {#if workspace}
-            <h1>Todos</h1>
+            <h1><span class="icon">📌</span>Todos</h1>
             <div class="page-content">
                 <Month
                     bind:value={month}
