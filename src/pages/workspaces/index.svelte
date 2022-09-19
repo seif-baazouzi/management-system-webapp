@@ -26,23 +26,20 @@
 
     let popup: string = null;
 
-    $: {
-        (async () => {
-            await ajax.put(
-                `${workspacesService}/api/v1/workspaces/${workspace.workspaceID}`,
-                null,
-                {
-                    workspace: workspace.workspace,
-                    icon: workspace.icon,
-                }
-            );
+    async function updateWorkspaceIcon(newIcon: string) {
+        await ajax.put(
+            `${workspacesService}/api/v1/workspaces/${workspace.workspaceID}`,
+            null,
+            {
+                workspace: workspace.workspace,
+                icon: newIcon,
+            }
+        );
 
-            $workspacesList = $workspacesList.map((w) => {
-                if (w.workspaceID === workspace.workspaceID)
-                    w.icon = workspace.icon;
-                return w;
-            });
-        })();
+        $workspacesList = $workspacesList.map((w) => {
+            if (w.workspaceID === workspace.workspaceID) w.icon = newIcon;
+            return w;
+        });
     }
 </script>
 
@@ -75,6 +72,7 @@
                 <IconPicker
                     fontSize="1.75rem"
                     bind:selectedIcon={workspace.icon}
+                    onUpdate={updateWorkspaceIcon}
                 />
                 {workspace.workspace}
             </h1>
