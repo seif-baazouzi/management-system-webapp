@@ -7,6 +7,7 @@
     import LinksChain from "~/components/LinksChain.svelte";
     import { refreshPage } from "~/store";
     import ajax from "~/utils/ajax";
+    import MessageBox from "~/components/MessageBox.svelte";
 
     let todos: Todo[] = [];
 
@@ -35,19 +36,23 @@
             links={[
                 {
                     link: `#/`,
-                    content: "Today Todos",
+                    content: "📅 Today Todos",
                 },
             ]}
         />
     </div>
 
     <div class="page-container">
-        <h1>Today Todos</h1>
-        <div class="todos">
-            {#each todos as todo}
-                <Single {todo} />
-            {/each}
-        </div>
+        <h1><span class="icon">📅</span> Today Todos</h1>
+        {#if todos.length}
+            <div class="todos">
+                {#each todos as todo}
+                    <Single {todo} />
+                {/each}
+            </div>
+        {:else}
+            <MessageBox icon="🧹" title="There is no todos Today!" />
+        {/if}
     </div>
 </DefaultLayout>
 

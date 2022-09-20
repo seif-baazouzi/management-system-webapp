@@ -6,7 +6,7 @@
 <div class="side-bar">
     <div class="content">
         <div class="links">
-            <a href="#/"><span>🕒</span> Today Todos</a>
+            <a href="#/"><span>📅</span>Today Todos</a>
         </div>
         <Workspaces />
     </div>

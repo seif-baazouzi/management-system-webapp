@@ -42,7 +42,7 @@
 <style>
     .picker-container {
         position: relative;
-        z-index: 100;
+        z-index: 10;
     }
 
     p {

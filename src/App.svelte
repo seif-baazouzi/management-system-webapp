@@ -3,15 +3,15 @@
 
 	import { prevActive, nextActive } from "~/store";
 
-	import Home from "./pages/home.svelte";
 	import Login from "./pages/login.svelte";
 	import Signup from "./pages/signup.svelte";
+	import TodayTodos from "./pages/today-todos.svelte";
 	import Workspace from "./pages/workspaces/index.svelte";
 	import NotFound from "./pages/404.svelte";
 	import Todos from "./pages/workspaces/todos.svelte";
 
 	const routes = {
-		"/": Home,
+		"/": TodayTodos,
 		"/login": Login,
 		"/signup": Signup,
 		"/workspace/:workspaceID": Workspace,
