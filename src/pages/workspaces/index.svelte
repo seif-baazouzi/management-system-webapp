@@ -2,7 +2,7 @@
     import { beforeUpdate } from "svelte";
 
     import DefaultLayout from "~/layouts/DefaultLayout.svelte";
-    import Error from "~/components/Error.svelte";
+    import MessageBox from "~/components/MessageBox.svelte";
     import { workspacesList } from "~/store";
     import type Workspace from "~/interfaces/workspace";
     import Children from "~/components/workspaces/Children.svelte";
@@ -51,14 +51,16 @@
 
 <DefaultLayout>
     <div slot="title">
-        <LinksChain
-            links={[
-                {
-                    link: `#/workspace/${workspace?.workspaceID}`,
-                    content: `${workspace?.icon} ${workspace?.workspace}`,
-                },
-            ]}
-        />
+        {#if workspace}
+            <LinksChain
+                links={[
+                    {
+                        link: `#/workspace/${workspace?.workspaceID}`,
+                        content: `${workspace?.icon} ${workspace?.workspace}`,
+                    },
+                ]}
+            />
+        {/if}
     </div>
 
     <div slot="menu">
@@ -89,7 +91,11 @@
                 <Children workspaceID={workspace.workspaceID} />
             </div>
         {:else}
-            <Error title="404 Error" message="Workspace not found." />
+            <MessageBox
+                icon="😵"
+                title="404 Error"
+                message="Workspace not found."
+            />
         {/if}
     </div>
 </DefaultLayout>

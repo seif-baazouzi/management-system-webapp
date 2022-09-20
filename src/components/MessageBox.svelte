@@ -28,6 +28,7 @@
     }
 
     h2 {
+        font-size: 1.75rem;
         text-align: center;
         margin: 2rem 0 1rem;
         text-transform: capitalize;

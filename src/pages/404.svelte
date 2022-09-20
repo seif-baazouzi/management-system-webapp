@@ -1,6 +1,6 @@
 <script>
     import DefaultLayout from "~/layouts/DefaultLayout.svelte";
-    import Error from "~/components/Error.svelte";
+    import MessageBox from "~/components/MessageBox.svelte";
 </script>
 
 <svelte:head>
@@ -8,5 +8,5 @@
 </svelte:head>
 
 <DefaultLayout>
-    <Error title="404 Error" message="Page not found." />
+    <MessageBox icon="😵" title="404 Error" message="Page not found." />
 </DefaultLayout>

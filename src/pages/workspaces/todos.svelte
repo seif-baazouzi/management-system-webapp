@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
 
     import DefaultLayout from "~/layouts/DefaultLayout.svelte";
-    import Error from "~/components/Error.svelte";
+    import MessageBox from "~/components/MessageBox.svelte";
     import { refreshPage, workspacesList } from "~/store";
     import type Workspace from "~/interfaces/workspace";
     import LinksChain from "~/components/LinksChain.svelte";
@@ -56,18 +56,20 @@
 
 <DefaultLayout>
     <div slot="title">
-        <LinksChain
-            links={[
-                {
-                    link: `#/workspace/${workspace?.workspaceID}`,
-                    content: `${workspace?.icon} ${workspace?.workspace}`,
-                },
-                {
-                    link: `#/workspace/${workspace?.workspaceID}/todos`,
-                    content: "📌 Todos",
-                },
-            ]}
-        />
+        {#if workspace}
+            <LinksChain
+                links={[
+                    {
+                        link: `#/workspace/${workspace?.workspaceID}`,
+                        content: `${workspace?.icon} ${workspace?.workspace}`,
+                    },
+                    {
+                        link: `#/workspace/${workspace?.workspaceID}/todos`,
+                        content: "📌 Todos",
+                    },
+                ]}
+            />
+        {/if}
     </div>
 
     <div slot="menu">
@@ -85,7 +87,11 @@
                 <TodosList {todos} />
             </div>
         {:else}
-            <Error title="404 Error" message="Workspace not found." />
+            <MessageBox
+                icon="😵"
+                title="404 Error"
+                message="Workspace not found."
+            />
         {/if}
     </div>
 </DefaultLayout>
