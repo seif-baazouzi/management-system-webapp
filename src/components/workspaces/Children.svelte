@@ -3,6 +3,9 @@
     import type Workspace from "~/interfaces/workspace";
     import { workspacesList } from "~/store";
 
+    import getLang from "~/langs/";
+    const lang = getLang();
+
     export let workspaceID: string;
     let childrenWorkspaces: Workspace[] = [];
 
@@ -14,7 +17,7 @@
 </script>
 
 <div class="workspaces-list">
-    <h4>Children Workspaces</h4>
+    <h4>{lang.childrenWorkspaces}</h4>
     <div class="links">
         {#each childrenWorkspaces as w}
             <a href="#/workspace/{w.workspaceID}">{w.workspace}</a>

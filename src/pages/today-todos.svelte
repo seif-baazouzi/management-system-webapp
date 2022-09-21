@@ -9,6 +9,9 @@
     import ajax from "~/utils/ajax";
     import MessageBox from "~/components/MessageBox.svelte";
 
+    import getLang from "~/langs/";
+    const lang = getLang();
+
     let todos: Todo[] = [];
 
     onMount(getTodayTodos);
@@ -36,14 +39,14 @@
             links={[
                 {
                     link: `#/`,
-                    content: "📅 Today Todos",
+                    content: `📅 ${lang.todayTodos}`,
                 },
             ]}
         />
     </div>
 
     <div class="page-container">
-        <h1><span class="icon">📅</span> Today Todos</h1>
+        <h1><span class="icon">📅</span> {lang.todayTodos}</h1>
         {#if todos.length}
             <div class="todos">
                 {#each todos as todo}
@@ -51,7 +54,7 @@
                 {/each}
             </div>
         {:else}
-            <MessageBox icon="🧹" title="There is no todos Today!" />
+            <MessageBox icon="🧹" title={lang.noTodosToday} />
         {/if}
     </div>
 </DefaultLayout>

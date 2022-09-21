@@ -1,12 +1,15 @@
 <script>
     import DefaultLayout from "~/layouts/DefaultLayout.svelte";
     import MessageBox from "~/components/MessageBox.svelte";
+
+    import getLang from "~/langs/";
+    const lang = getLang();
 </script>
 
 <svelte:head>
-    <title>Page not found</title>
+    <title>{lang.pageNotFound}</title>
 </svelte:head>
 
 <DefaultLayout>
-    <MessageBox icon="😵" title="404 Error" message="Page not found." />
+    <MessageBox icon="😵" title={lang.error404} message={lang.pageNotFound} />
 </DefaultLayout>

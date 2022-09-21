@@ -13,6 +13,9 @@
     import AddTodoPopup from "~/popups/todos/Add.svelte";
     import { formatMonth } from "~/utils";
 
+    import getLang from "~/langs/";
+    const lang = getLang();
+
     export let params: { workspaceID: string };
     let workspace: Workspace = null;
 
@@ -51,7 +54,7 @@
 </script>
 
 <svelte:head>
-    <title>{workspace?.workspace} Workspace Todos</title>
+    <title>{workspace?.workspace} {lang.workspace} {lang.todos}</title>
 </svelte:head>
 
 <DefaultLayout>
@@ -65,7 +68,7 @@
                     },
                     {
                         link: `#/workspace/${workspace?.workspaceID}/todos`,
-                        content: "📌 Todos",
+                        content: `📌 ${lang.todos}`,
                     },
                 ]}
             />
@@ -73,12 +76,14 @@
     </div>
 
     <div slot="menu">
-        <div class="menu-item" on:click={() => (popup = true)}>Add todo</div>
+        <div class="menu-item" on:click={() => (popup = true)}>
+            {lang.createTodo}
+        </div>
     </div>
 
     <div class="page-container">
         {#if workspace}
-            <h1><span class="icon">📌</span>Todos</h1>
+            <h1><span class="icon">📌</span>{lang.todos}</h1>
             <div class="page-content">
                 <Month
                     bind:value={month}
@@ -89,8 +94,8 @@
         {:else}
             <MessageBox
                 icon="😵"
-                title="404 Error"
-                message="Workspace not found."
+                title={lang.error404}
+                message={lang.workspaceNotFound}
             />
         {/if}
     </div>

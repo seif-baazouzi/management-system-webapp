@@ -8,6 +8,9 @@
     import ajax from "~/utils/ajax";
     import Popup from "../Popup.svelte";
 
+    import getLang from "~/langs/";
+    const lang = getLang();
+
     const dispatch = createEventDispatcher();
     const close = () => dispatch("close");
 
@@ -45,7 +48,7 @@
 
 <Popup on:close={close}>
     <div class="popup-content">
-        <h3>Add new todo</h3>
+        <h3>{lang.editTodo}</h3>
         <form on:submit={updateTodo}>
             <Input
                 type="text"
@@ -71,7 +74,7 @@
                 bind:value={todo.endingDate}
                 error={errors.endingDate}
             />
-            <button class="blue block">Submit</button>
+            <button class="blue block">{lang.submit}</button>
         </form>
     </div>
 </Popup>

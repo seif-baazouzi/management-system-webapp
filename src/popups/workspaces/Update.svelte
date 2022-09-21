@@ -5,8 +5,10 @@
     import { workspacesService } from "~/config";
     import ajax from "~/utils/ajax";
     import Popup from "../Popup.svelte";
-
     import { workspacesList } from "~/store";
+
+    import getLang from "~/langs/";
+    const lang = getLang();
 
     const dispatch = createEventDispatcher();
     const close = () => dispatch("close");
@@ -45,7 +47,7 @@
 
 <Popup on:close={close}>
     <div class="popup-content">
-        <h3>Update workspace</h3>
+        <h3>{lang.updateWorkspace}</h3>
         <form on:submit={updateWorkspace}>
             <Input
                 type="text"
@@ -53,7 +55,7 @@
                 bind:value={workspace}
                 error={errors.workspace}
             />
-            <button class="blue block">Submit</button>
+            <button class="blue block">{lang.submit}</button>
         </form>
     </div>
 </Popup>

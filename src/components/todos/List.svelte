@@ -3,6 +3,9 @@
     import SingleTodo from "./Single.svelte";
     import MessageBox from "~/components/MessageBox.svelte";
 
+    import getLang from "~/langs/";
+    const lang = getLang();
+
     export let todos: { [index: string]: Todo[] };
 
     function isTodosEmpty(todos): boolean {
@@ -29,7 +32,7 @@
             {/if}
         {/each}
     {:else}
-        <MessageBox icon="🧹" title="There is no todos this month!" />
+        <MessageBox icon="🧹" title={lang.noTodoThisMonth} />
     {/if}
 </div>
 

@@ -8,6 +8,9 @@
     import { workspacesList } from "~/store";
     import { push } from "svelte-spa-router";
 
+    import getLang from "~/langs/";
+    const lang = getLang();
+
     const dispatch = createEventDispatcher();
     const close = () => dispatch("close");
 
@@ -30,10 +33,12 @@
 
 <Popup on:close={close}>
     <div class="popup-content-delete">
-        <h3>Are you sure you want yo delete this workspace!</h3>
+        <h3>{lang.deleteWorkspaceMessage}</h3>
         <div class="buttons">
-            <button on:click={close}>Cancel</button>
-            <button class="red" on:click={deleteWorkspace}>Delete</button>
+            <button on:click={close}>{lang.cancel}</button>
+            <button class="red" on:click={deleteWorkspace}>
+                {lang.delete}
+            </button>
         </div>
     </div>
 </Popup>

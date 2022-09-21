@@ -7,6 +7,9 @@
     import ajax from "~/utils/ajax";
     import Popup from "../Popup.svelte";
 
+    import getLang from "~/langs/";
+    const lang = getLang();
+
     const dispatch = createEventDispatcher();
     const close = () => dispatch("close");
 
@@ -23,10 +26,10 @@
 
 <Popup on:close={close}>
     <div class="popup-content-delete">
-        <h3>Are you sure you want yo delete this todo!</h3>
+        <h3>{lang.deleteTodoMessage}</h3>
         <div class="buttons">
-            <button on:click={close}>Cancel</button>
-            <button class="red" on:click={deleteTodo}>Delete</button>
+            <button on:click={close}>{lang.cancel}</button>
+            <button class="red" on:click={deleteTodo}>{lang.delete}</button>
         </div>
     </div>
 </Popup>

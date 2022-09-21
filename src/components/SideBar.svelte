@@ -1,12 +1,15 @@
 <script lang="ts">
     import Workspaces from "~/components/workspaces/List.svelte";
     import AddWorkspaceBtn from "./workspaces/AddWorkspaceBtn.svelte";
+
+    import getLang from "~/langs/";
+    const lang = getLang();
 </script>
 
 <div class="side-bar">
     <div class="content">
         <div class="links">
-            <a href="#/"><span>📅</span>Today Todos</a>
+            <a href="#/"><span>📅</span>{lang.todayTodos}</a>
         </div>
         <Workspaces />
     </div>

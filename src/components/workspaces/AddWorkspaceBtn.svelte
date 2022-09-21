@@ -1,11 +1,15 @@
 <script lang="ts">
     import AddWorkspacePopup from "~/popups/workspaces/Add.svelte";
 
+    import getLang from "~/langs/";
+    const lang = getLang();
+
     let showAddWorkspacePopup = false;
 </script>
 
 <div class="add-workspace" on:click={() => (showAddWorkspacePopup = true)}>
-    <span>+</span> New Workspace
+    <span>+</span>
+    {lang.newWorkspace}
 </div>
 
 {#if showAddWorkspacePopup}
