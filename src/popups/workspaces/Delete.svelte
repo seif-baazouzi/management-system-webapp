@@ -1,7 +1,7 @@
 <script lang="ts">
     import { createEventDispatcher } from "svelte";
 
-    import { workspacesService } from "~/config";
+    import { todosService, workspacesService } from "~/config";
     import ajax from "~/utils/ajax";
     import Popup from "../Popup.svelte";
 
@@ -16,18 +16,15 @@
     async function deleteWorkspace(event: any) {
         event?.preventDefault();
 
-        const res = await ajax.del(
-            `${workspacesService}/api/v1/workspaces/${workspaceID}`
+        ajax.del(`${todosService}/api/v1/todos/workspace/${workspaceID}`);
+        ajax.del(`${workspacesService}/api/v1/workspaces/${workspaceID}`);
+
+        $workspacesList = $workspacesList.filter(
+            (w) => w.workspaceID != workspaceID
         );
 
-        if (res.message === "success") {
-            $workspacesList = $workspacesList.filter(
-                (w) => w.workspaceID != workspaceID
-            );
-
-            close();
-            push("/");
-        }
+        close();
+        push("/");
     }
 </script>
 
