@@ -3,7 +3,7 @@
 
     import DefaultLayout from "~/layouts/DefaultLayout.svelte";
     import MessageBox from "~/components/MessageBox.svelte";
-    import { refreshPage, workspacesList } from "~/store";
+    import { refreshPage, rightToLeft, workspacesList } from "~/store";
     import type Workspace from "~/interfaces/workspace";
     import LinksChain from "~/components/LinksChain.svelte";
     import ajax from "~/utils/ajax";
@@ -87,7 +87,9 @@
             <div class="page-content">
                 <Month
                     bind:value={month}
-                    style="position: absolute; right: 0; z-index: 10"
+                    style="position: absolute; {!$rightToLeft
+                        ? 'right: 0;'
+                        : ''} z-index: 10;"
                 />
                 <TodosList {todos} />
             </div>

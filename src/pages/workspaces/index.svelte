@@ -3,7 +3,7 @@
 
     import DefaultLayout from "~/layouts/DefaultLayout.svelte";
     import MessageBox from "~/components/MessageBox.svelte";
-    import { workspacesList } from "~/store";
+    import { rightToLeft, workspacesList } from "~/store";
     import type Workspace from "~/interfaces/workspace";
     import Children from "~/components/workspaces/Children.svelte";
     import LinksChain from "~/components/LinksChain.svelte";
@@ -75,9 +75,9 @@
         </div>
     </div>
 
-    <div class="page-container">
+    <div class="page-container {$rightToLeft ? 'revert' : ''}">
         {#if workspace}
-            <h1 class="has-icon">
+            <h1>
                 <IconPicker
                     fontSize="1.75rem"
                     bind:selectedIcon={workspace.icon}
@@ -130,6 +130,10 @@
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
+        }
+
+        .revert .page-content {
+            flex-direction: row-reverse;
         }
 
         .links {

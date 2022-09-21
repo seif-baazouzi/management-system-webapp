@@ -2,12 +2,16 @@
     import AddWorkspacePopup from "~/popups/workspaces/Add.svelte";
 
     import getLang from "~/langs/";
+    import { rightToLeft } from "~/store";
     const lang = getLang();
 
     let showAddWorkspacePopup = false;
 </script>
 
-<div class="add-workspace" on:click={() => (showAddWorkspacePopup = true)}>
+<div
+    class="add-workspace {$rightToLeft ? 'revert' : ''}"
+    on:click={() => (showAddWorkspacePopup = true)}
+>
     <span>+</span>
     {lang.newWorkspace}
 </div>
@@ -38,11 +42,22 @@
         color: var(--dark-gray);
     }
 
+    .add-workspace.revert {
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+    }
+
     .add-workspace span {
         display: inline-block;
         font-size: 1.25rem;
         color: var(--gray);
         font-weight: 200;
         margin-right: 0.25rem;
+    }
+
+    .add-workspace.revert span {
+        margin-right: 0;
+        margin-left: 0.25rem;
     }
 </style>

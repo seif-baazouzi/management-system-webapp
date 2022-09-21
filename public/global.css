@@ -182,15 +182,21 @@ button:is(.blue, .red):hover {
 	margin: 0 auto;
 }
 
+.page-container.revert {
+	text-align: right;
+}
+
+
 .page-container h1 {
 	font-size: 3rem;
 	text-transform: capitalize;
-}
-
-.page-container h1.has-icon {
 	display: flex;
 	align-items: center;
 	gap: .125em;
+}
+
+.page-container.revert h1 {
+	flex-direction: row-reverse;
 }
 
 .page-container h1 .icon {
@@ -236,6 +242,11 @@ button:is(.blue, .red):hover {
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 1rem;
+}
+
+
+.revert .links {
+	align-items: flex-end;
 }
 
 .links a {

@@ -4,6 +4,7 @@
     import MessageBox from "~/components/MessageBox.svelte";
 
     import getLang from "~/langs/";
+    import { rightToLeft } from "~/store";
     const lang = getLang();
 
     export let todos: { [index: string]: Todo[] };
@@ -19,16 +20,14 @@
     }
 </script>
 
-<div class="todos">
+<div class="todos {$rightToLeft ? 'revert' : ''}">
     {#if !isTodosEmpty(todos)}
         {#each Object.entries(todos) as [date, todosList]}
             {#if todosList != null}
                 <h3 class="date">{new Date(date).toDateString()}</h3>
-                <ul>
-                    {#each todosList as todo}
-                        <SingleTodo {todo} />
-                    {/each}
-                </ul>
+                {#each todosList as todo}
+                    <SingleTodo {todo} />
+                {/each}
             {/if}
         {/each}
     {:else}
@@ -43,5 +42,9 @@
         top: 2rem;
         background-color: var(--white);
         z-index: 1;
+    }
+
+    .revert h3 {
+        text-align: right;
     }
 </style>

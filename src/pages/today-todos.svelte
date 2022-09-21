@@ -5,7 +5,7 @@
     import type Todo from "~/interfaces/todo";
     import DefaultLayout from "~/layouts/DefaultLayout.svelte";
     import LinksChain from "~/components/LinksChain.svelte";
-    import { refreshPage } from "~/store";
+    import { refreshPage, rightToLeft } from "~/store";
     import ajax from "~/utils/ajax";
     import MessageBox from "~/components/MessageBox.svelte";
 
@@ -45,7 +45,7 @@
         />
     </div>
 
-    <div class="page-container">
+    <div class="page-container {$rightToLeft ? 'revert' : ''}">
         <h1><span class="icon">📅</span> {lang.todayTodos}</h1>
         {#if todos.length}
             <div class="todos">

@@ -3,7 +3,7 @@
     import { workspacesService } from "~/config";
 
     import type Workspace from "~/interfaces/workspace";
-    import { draggableWorkspace, workspacesList } from "~/store";
+    import { draggableWorkspace, rightToLeft, workspacesList } from "~/store";
     import ajax from "~/utils/ajax";
 
     export let w: Workspace;
@@ -34,6 +34,7 @@
 </script>
 
 <details
+    class={$rightToLeft ? "revert" : ""}
     draggable="true"
     on:drop={() => setParentWorkspace(w.workspaceID)}
     on:drag={() => {
@@ -74,5 +75,10 @@
 
     .children {
         margin-left: 0.5rem;
+    }
+
+    .revert .children {
+        margin-left: 0;
+        margin-right: 0.5rem;
     }
 </style>

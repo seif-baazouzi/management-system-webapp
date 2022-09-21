@@ -6,6 +6,7 @@
     import ajax from "~/utils/ajax";
     import DeleteIcon from "~/components/icons/Delete.svelte";
     import EditIcon from "~/components/icons/Edit.svelte";
+    import { rightToLeft } from "~/store";
 
     export let todo: Todo;
     let popup: string = null;
@@ -16,7 +17,7 @@
     }
 </script>
 
-<div class="todo {todo.done ? 'done' : ''}">
+<div class="todo {todo.done ? 'done' : ''} {$rightToLeft ? 'revert' : ''}">
     <h3>
         <input type="checkbox" bind:checked={todo.done} />
         {todo.title}
@@ -55,11 +56,20 @@
         opacity: 0.25;
     }
 
+    .todo.revert {
+        text-align: right;
+    }
+
     input {
         --size: 1rem;
         width: var(--size);
         height: var(--size);
         margin-right: 0.25rem;
+    }
+
+    .revert input {
+        margin-right: 0;
+        margin-left: 0.25rem;
     }
 
     h3 {
@@ -68,15 +78,29 @@
         padding-right: 2rem;
     }
 
+    .revert h3 {
+        display: flex;
+        flex-direction: row-reverse;
+        padding-right: 0;
+        padding-left: 2rem;
+    }
+
     .actions {
         position: absolute;
         top: 0;
         right: 0;
         display: none;
+        gap: 0.25rem;
     }
 
     .todo:hover .actions {
-        display: block;
+        display: flex;
+    }
+
+    .revert .actions {
+        left: 0;
+        right: auto;
+        flex-direction: row-reverse;
     }
 
     p {
@@ -87,7 +111,7 @@
 
     @media screen and (max-width: 768px) {
         .actions {
-            display: block;
+            display: flex;
         }
     }
 </style>

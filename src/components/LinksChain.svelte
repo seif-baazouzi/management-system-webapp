@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { rightToLeft } from "~/store";
+
     interface Link {
         link: string;
         content: string;
@@ -7,7 +9,7 @@
     export let links: Link[] = [];
 </script>
 
-<div class="chain">
+<div class="chain {$rightToLeft ? 'revert' : ''}">
     {#each links as link, index}
         {#if index != 0}<span>/</span>{/if}
         <a href={link.link}>{link.content}</a>
@@ -19,6 +21,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .chain.revert {
+        flex-direction: row-reverse;
     }
 
     a {

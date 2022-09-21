@@ -88,6 +88,11 @@
         box-shadow: var(--shadow);
     }
 
+    .top-bar.revert .drop-down {
+        left: 1rem;
+        right: auto;
+    }
+
     .menu:focus-within .drop-down {
         display: block;
     }
