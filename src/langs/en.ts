@@ -32,4 +32,6 @@ export default {
     noTodoThisMonth: "There is no todos this month!",
     childrenWorkspaces: "Children Workspaces",
     noNotes: "There is no notes yet!",
+    addNewNote: "Add new note",
+    createNote: "CreateNote",
 }

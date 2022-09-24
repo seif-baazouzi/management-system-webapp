@@ -3,7 +3,6 @@ interface Note {
     title: string;
     body: string;
     workspaceID: string;
-    createdAt: string;
 }
 
 export default Note;

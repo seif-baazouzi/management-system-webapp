@@ -8,7 +8,7 @@
     import LinksChain from "~/components/LinksChain.svelte";
     import ajax from "~/utils/ajax";
     import { notesService, todosService } from "~/config";
-    // import AddTodoPopup from "~/popups/todos/Add.svelte";
+    import AddNotePopup from "~/popups/notes/Add.svelte";
     import type Note from "~/interfaces/note";
 
     import getLang from "~/langs/";
@@ -68,9 +68,9 @@
     </div>
 
     <div slot="menu">
-        <!-- <div class="menu-item" on:click={() => (popup = true)}>
-            {lang.createTodo}
-        </div> -->
+        <div class="menu-item" on:click={() => (popup = true)}>
+            {lang.createNote}
+        </div>
     </div>
 
     <div class="page-container {$rightToLeft ? 'revert' : ''}">
@@ -89,9 +89,9 @@
     </div>
 </DefaultLayout>
 
-<!-- {#if popup}
-    <AddTodoPopup
+{#if popup}
+    <AddNotePopup
         workspaceID={params.workspaceID}
         on:close={() => (popup = false)}
     />
-{/if} -->
+{/if}
