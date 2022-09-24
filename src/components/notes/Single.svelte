@@ -1,5 +1,6 @@
 <script lang="ts">
     import type Note from "~/interfaces/note";
+    import Delete from "~/popups/notes/Delete.svelte";
     import DeleteIcon from "../icons/Delete.svelte";
 
     export let note: Note;
@@ -17,11 +18,16 @@
     </div>
 </div>
 
+{#if deletePopup}
+    <Delete {note} on:close={() => (deletePopup = false)} />
+{/if}
+
 <style>
     .note {
         padding: 0.5rem;
         position: relative;
         border-radius: 0.25rem;
+        padding-right: 2rem;
     }
 
     .note:hover {

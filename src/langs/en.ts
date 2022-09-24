@@ -34,4 +34,5 @@ export default {
     noNotes: "There is no notes yet!",
     addNewNote: "Add new note",
     createNote: "CreateNote",
+    deleteNoteMessage: "Are you sure you want yo delete this note!",
 }
