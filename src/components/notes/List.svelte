@@ -7,7 +7,6 @@
     const lang = getLang();
 
     export let notes: Note[];
-    console.log(notes);
 </script>
 
 <div class="notes">
