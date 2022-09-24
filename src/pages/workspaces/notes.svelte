@@ -7,13 +7,12 @@
     import type Workspace from "~/interfaces/workspace";
     import LinksChain from "~/components/LinksChain.svelte";
     import ajax from "~/utils/ajax";
-    import { todosService } from "~/config";
-    import Month from "~/components/inputs/Month.svelte";
-    import TodosList from "~/components/todos/List.svelte";
-    import AddTodoPopup from "~/popups/todos/Add.svelte";
-    import { formatMonth } from "~/utils";
+    import { notesService, todosService } from "~/config";
+    // import AddTodoPopup from "~/popups/todos/Add.svelte";
+    import type Note from "~/interfaces/note";
 
     import getLang from "~/langs/";
+    import List from "~/components/notes/List.svelte";
     const lang = getLang();
 
     export let params: { workspaceID: string };
@@ -25,31 +24,24 @@
         )[0];
     });
 
-    let month = formatMonth();
-    let todos = {};
-
+    let notes: Note[] = [];
     let popup = false;
 
-    onMount(getTodos);
-
-    $: {
-        month;
-        getTodos();
-    }
+    onMount(getNotes);
 
     refreshPage.subscribe(() => {
         if ($refreshPage) {
-            getTodos();
+            getNotes();
             $refreshPage = false;
         }
     });
 
-    async function getTodos() {
+    async function getNotes() {
         const res = await ajax.get(
-            `${todosService}/api/v1/todos/${params.workspaceID}/month/${month}`
+            `${notesService}/api/v1/notes/${params.workspaceID}`
         );
 
-        todos = res.todos;
+        notes = res.notes ?? [];
     }
 </script>
 
@@ -67,8 +59,8 @@
                         content: `${workspace?.icon} ${workspace?.workspace}`,
                     },
                     {
-                        link: `#/workspace/${workspace?.workspaceID}/todos`,
-                        content: `📌 ${lang.todos}`,
+                        link: `#/workspace/${workspace?.workspaceID}/notes`,
+                        content: `📝 ${lang.notes}`,
                     },
                 ]}
             />
@@ -76,22 +68,16 @@
     </div>
 
     <div slot="menu">
-        <div class="menu-item" on:click={() => (popup = true)}>
+        <!-- <div class="menu-item" on:click={() => (popup = true)}>
             {lang.createTodo}
-        </div>
+        </div> -->
     </div>
 
     <div class="page-container {$rightToLeft ? 'revert' : ''}">
         {#if workspace}
-            <h1><span class="icon">📌</span>{lang.todos}</h1>
+            <h1><span class="icon">📝</span>{lang.notes}</h1>
             <div class="page-content">
-                <Month
-                    bind:value={month}
-                    style="position: absolute; {!$rightToLeft
-                        ? 'right: 0;'
-                        : ''} z-index: 10;"
-                />
-                <TodosList {todos} />
+                <List {notes} />
             </div>
         {:else}
             <MessageBox
@@ -103,9 +89,9 @@
     </div>
 </DefaultLayout>
 
-{#if popup}
+<!-- {#if popup}
     <AddTodoPopup
         workspaceID={params.workspaceID}
         on:close={() => (popup = false)}
     />
-{/if}
+{/if} -->

@@ -9,6 +9,7 @@
 	import Workspace from "./pages/workspaces/index.svelte";
 	import NotFound from "./pages/404.svelte";
 	import Todos from "./pages/workspaces/todos.svelte";
+	import Notes from "./pages/workspaces/notes.svelte";
 
 	const routes = {
 		"/": TodayTodos,
@@ -16,6 +17,7 @@
 		"/signup": Signup,
 		"/workspace/:workspaceID": Workspace,
 		"/workspace/:workspaceID/todos": Todos,
+		"/workspace/:workspaceID/notes": Notes,
 
 		"*": NotFound,
 	};
