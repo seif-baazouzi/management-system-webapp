@@ -6,10 +6,11 @@
 	import Login from "./pages/login.svelte";
 	import Signup from "./pages/signup.svelte";
 	import TodayTodos from "./pages/today-todos.svelte";
-	import Workspace from "./pages/workspaces/index.svelte";
+	import Workspace from "./pages/workspaces/workspaces.svelte";
 	import NotFound from "./pages/404.svelte";
 	import Todos from "./pages/workspaces/todos.svelte";
-	import Notes from "./pages/workspaces/notes.svelte";
+	import Notes from "./pages/workspaces/notes/notes-list.svelte";
+	import SingleNote from "./pages/workspaces/notes/single-note.svelte";
 
 	const routes = {
 		"/": TodayTodos,
@@ -18,6 +19,7 @@
 		"/workspace/:workspaceID": Workspace,
 		"/workspace/:workspaceID/todos": Todos,
 		"/workspace/:workspaceID/notes": Notes,
+		"/workspace/:workspaceID/notes/:noteID": SingleNote,
 
 		"*": NotFound,
 	};

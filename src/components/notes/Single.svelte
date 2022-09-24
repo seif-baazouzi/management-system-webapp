@@ -9,7 +9,9 @@
 </script>
 
 <div class="note">
-    <a href="#/notes/{note.noteID}">{note.title}</a>
+    <a href="#/workspace/{note.workspaceID}/notes/{note.noteID}">
+        {note.title}
+    </a>
     <div class="actions">
         <DeleteIcon
             color="var(--red)"
