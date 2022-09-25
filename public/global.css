@@ -36,6 +36,7 @@ select {
 	border: none;
 	outline: none;
 	color: var(--black);
+	font-family: "Catamaran";
 }
 
 a {
