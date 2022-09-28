@@ -4,6 +4,7 @@
     import type Note from "~/interfaces/note";
     import ajax from "~/utils/ajax";
     import NoteTitle from "./Title.svelte";
+    import NoteBody from "./Body.svelte";
 
     export let note: Note;
 
@@ -18,4 +19,4 @@
 </script>
 
 <NoteTitle {note} onChange={updateNote} />
-<textarea bind:value={note.body} on:change={updateNote} />
+<NoteBody {note} />

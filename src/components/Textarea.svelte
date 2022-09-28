@@ -4,7 +4,12 @@
     export let classes = "";
     export let placeholder = "";
     export let onChange: Function = null;
-    export let onPressEnter: Function = null;
+    export let onPressEnter: Function = (event: any) => {
+        if (event?.key === "Enter") {
+            event?.preventDefault();
+            event?.target.blur();
+        }
+    };
 
     function inputHandler(event: any) {
         event.target.style.height = 0;
