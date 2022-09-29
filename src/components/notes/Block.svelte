@@ -7,15 +7,15 @@
     let block = parseLine(line);
 
     let editMode = false;
-    function onPressEnter(event: any) {
-        if (event?.key === "Enter") {
-            event?.preventDefault();
-            event?.target.blur();
+    function onPressEnter() {
+        line = value;
+        block = parseLine(value);
+        editMode = false;
+    }
 
-            line = value;
-            block = parseLine(value);
-            editMode = false;
-        }
+    function onChange() {
+        line = value;
+        block = parseLine(value);
     }
 </script>
 
@@ -26,12 +26,10 @@
 {:else}
     <Textarea
         bind:value
+        {onChange}
         {onPressEnter}
+        autoFocus={true}
         onBlur={() => (editMode = false)}
-        onChange={() => {
-            line = value;
-            block = parseLine(value);
-        }}
-        style="display: block; font-size: 1rem"
+        style="display: block; font-size: 1rem; margin-bottom: 1rem"
     />
 {/if}

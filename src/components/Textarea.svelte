@@ -5,24 +5,26 @@
     export let value = "";
     export let classes = "";
     export let placeholder = "";
+    export let autoFocus = false;
     export let onBlur: Function = null;
     export let onChange: Function = null;
-    export let onPressEnter: Function = (event: any) => {
-        if (event?.key === "Enter") {
-            event?.preventDefault();
-            event?.target.blur();
-        }
-    };
+    export let onPressEnter: Function = null;
 
     let ref: HTMLTextAreaElement;
-
-    onMount(() => {
-        ref.focus();
-    });
+    onMount(() => autoFocus && ref.focus());
 
     function setHeight(event: any) {
         event.target.style.height = 0;
         event.target.style.height = event.target.scrollHeight + "px";
+    }
+
+    function onPressEnterHandler(event: any) {
+        if (event?.key === "Enter") {
+            event?.preventDefault();
+            event?.target.blur();
+
+            onPressEnter && onPressEnter(event);
+        }
     }
 </script>
 
@@ -34,9 +36,9 @@
     class={classes}
     on:input={setHeight}
     on:focus={setHeight}
+    on:keypress={onPressEnterHandler}
     on:blur={(e) => onBlur && onBlur(e)}
     on:change={(e) => onChange && onChange(e)}
-    on:keypress={(e) => onPressEnter && onPressEnter(e)}
 />
 
 <style>

@@ -6,24 +6,21 @@
     let value = "";
 
     function onPressEnter(event: any) {
-        if (event?.key === "Enter") {
-            event?.preventDefault();
-            event?.target.blur();
+        value = value.trim();
+        if (value) {
+            body += "\n" + value;
+            value = "";
 
-            value = value.trim();
-            if (value) {
-                body += "\n" + value;
-                value = "";
-
-                onChange(body);
-            }
+            onChange(body);
+            event?.target.focus();
+            window.scrollTo(0, document.body.scrollHeight);
         }
     }
 </script>
 
 <Textarea
     bind:value
-    placeholder="Add Block"
     {onPressEnter}
-    style="display: block; font-size: 1rem; margin-top: 1rem"
+    placeholder="Add Block"
+    style="display: block; font-size: 1rem; margin: 1rem 0 5rem"
 />
