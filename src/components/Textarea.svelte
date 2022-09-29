@@ -20,7 +20,7 @@
         ref.focus();
     });
 
-    function inputHandler(event: any) {
+    function setHeight(event: any) {
         event.target.style.height = 0;
         event.target.style.height = event.target.scrollHeight + "px";
     }
@@ -32,7 +32,8 @@
     bind:value
     {placeholder}
     class={classes}
-    on:input={inputHandler}
+    on:input={setHeight}
+    on:focus={setHeight}
     on:blur={(e) => onBlur && onBlur(e)}
     on:change={(e) => onChange && onChange(e)}
     on:keypress={(e) => onPressEnter && onPressEnter(e)}

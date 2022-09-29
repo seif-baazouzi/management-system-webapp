@@ -37,7 +37,7 @@
     <title>{workspace?.workspace} {lang.workspace} {lang.todos}</title>
 </svelte:head>
 
-<DefaultLayout>
+<DefaultLayout showMenu={false}>
     <div slot="title">
         {#if workspace}
             <LinksChain

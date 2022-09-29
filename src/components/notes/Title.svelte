@@ -10,5 +10,5 @@
     onChange={() => onChange()}
     placeholder="Title"
     bind:value={note.title}
-    style="display: block; font-size: 3rem; font-weight: bold"
+    style="display: block; font-size: 3rem; font-weight: bold; margin-bottom: 2rem"
 />

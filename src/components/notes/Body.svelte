@@ -24,3 +24,9 @@
 {#each lines as line}
     <Block bind:line />
 {/each}
+
+<style>
+    :global(h1, h2, h3, h4, h5, h6, p) {
+        margin-bottom: 0.75em;
+    }
+</style>
