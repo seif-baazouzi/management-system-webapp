@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { onMount } from "svelte";
+
     export let style = "";
     export let value = "";
     export let classes = "";
@@ -12,6 +14,12 @@
         }
     };
 
+    let ref: HTMLTextAreaElement;
+
+    onMount(() => {
+        ref.focus();
+    });
+
     function inputHandler(event: any) {
         event.target.style.height = 0;
         event.target.style.height = event.target.scrollHeight + "px";
@@ -19,7 +27,7 @@
 </script>
 
 <textarea
-    autofocus
+    bind:this={ref}
     {style}
     bind:value
     {placeholder}
