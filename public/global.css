@@ -1,6 +1,6 @@
 @font-face {
-	font-family: "Catamaran";
-	src: url("/fonts/Catamaran.ttf");
+	font-family: "OpenSans";
+	src: url("/fonts/OpenSans.ttf");
 }
 
 *,
@@ -36,7 +36,7 @@ select {
 	border: none;
 	outline: none;
 	color: var(--black);
-	font-family: "Catamaran";
+	font-family: "OpenSans";
 }
 
 a {
@@ -51,7 +51,7 @@ img {
 
 body {
 	color: var(--black);
-	font-family: "Catamaran";
+	font-family: "OpenSans";
 	background-color: var(--white);
 	overflow-x: hidden;
 }
