@@ -1,12 +1,26 @@
 <script lang="ts">
+    import { beforeUpdate } from "svelte";
     import type Note from "~/interfaces/note";
-    import parseNoteBody from "~/utils/parse-note-body";
     import Block from "./Block.svelte";
 
     export let note: Note;
-    let blocks = parseNoteBody(note.body);
+    export let onChange: Function;
+
+    let lines: string[] = [];
+
+    beforeUpdate(() => {
+        lines = note.body
+            .split("\n")
+            .map((l) => l.trim())
+            .filter((l) => l != "");
+    });
+
+    $: {
+        console.log(lines);
+        onChange(lines.join("\n"));
+    }
 </script>
 
-{#each blocks as block}
-    <Block {block} />
+{#each lines as line}
+    <Block bind:line />
 {/each}

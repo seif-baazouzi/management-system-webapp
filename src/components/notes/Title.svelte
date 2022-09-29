@@ -7,7 +7,7 @@
 </script>
 
 <Textarea
-    {onChange}
+    onChange={() => onChange()}
     placeholder="Title"
     bind:value={note.title}
     style="display: block; font-size: 3rem; font-weight: bold"

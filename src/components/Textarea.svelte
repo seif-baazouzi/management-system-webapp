@@ -3,6 +3,7 @@
     export let value = "";
     export let classes = "";
     export let placeholder = "";
+    export let onBlur: Function = null;
     export let onChange: Function = null;
     export let onPressEnter: Function = (event: any) => {
         if (event?.key === "Enter") {
@@ -18,11 +19,13 @@
 </script>
 
 <textarea
+    autofocus
     {style}
     bind:value
     {placeholder}
     class={classes}
     on:input={inputHandler}
+    on:blur={(e) => onBlur && onBlur(e)}
     on:change={(e) => onChange && onChange(e)}
     on:keypress={(e) => onPressEnter && onPressEnter(e)}
 />

@@ -1,19 +1,37 @@
 <script lang="ts">
-    import type Block from "~/interfaces/block";
+    import parseLine from "~/utils/parse-note-body";
     import Textarea from "../Textarea.svelte";
 
-    export let block: Block;
+    export let line: string;
+    let value = line;
+    let block = parseLine(line);
 
-    const styles = {
-        h1: "display: block; font-size: 3rem;   font-weight: bold",
-        h2: "display: block; font-size: 2.5rem; font-weight: bold",
-        h3: "display: block; font-size: 2rem;   font-weight: bold",
-        h4: "display: block; font-size: 1.5rem; font-weight: bold",
-        h5: "display: block; font-size: 1rem;   font-weight: bold",
-        h6: "display: block; font-size: 0.5rem; font-weight: bold",
+    let editMode = false;
+    function onPressEnter(event: any) {
+        if (event?.key === "Enter") {
+            event?.preventDefault();
+            event?.target.blur();
 
-        p: "display: block; font-size: 1rem;",
-    };
+            line = value;
+            block = parseLine(value);
+            editMode = false;
+        }
+    }
 </script>
 
-<Textarea bind:value={block.content} style={styles[block.type] ?? styles.p} />
+{#if !editMode}
+    <svelte:element this={block.type} on:dblclick={() => (editMode = true)}>
+        {block.content}
+    </svelte:element>
+{:else}
+    <Textarea
+        bind:value
+        {onPressEnter}
+        onBlur={() => (editMode = false)}
+        onChange={() => {
+            line = value;
+            block = parseLine(value);
+        }}
+        style="display: block; font-size: 1rem"
+    />
+{/if}
