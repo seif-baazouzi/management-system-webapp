@@ -7,6 +7,7 @@
     export let placeholder = "";
     export let autoFocus = false;
     export let onBlur: Function = null;
+    export let onInput: Function = null;
     export let onChange: Function = null;
     export let onPressEnter: Function = null;
 
@@ -26,6 +27,11 @@
             onPressEnter && onPressEnter(event);
         }
     }
+
+    function onInputHandler(event: any) {
+        setHeight(event);
+        onInput(event);
+    }
 </script>
 
 <textarea
@@ -34,8 +40,8 @@
     bind:value
     {placeholder}
     class={classes}
-    on:input={setHeight}
     on:focus={setHeight}
+    on:input={onInputHandler}
     on:keypress={onPressEnterHandler}
     on:blur={(e) => onBlur && onBlur(e)}
     on:change={(e) => onChange && onChange(e)}
