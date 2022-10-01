@@ -30,7 +30,7 @@
 
     function onInputHandler(event: any) {
         setHeight(event);
-        onInput(event);
+        onInput && onInput(event);
     }
 </script>
 

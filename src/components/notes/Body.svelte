@@ -1,29 +1,52 @@
 <script lang="ts">
     import { beforeUpdate } from "svelte";
-    import type Note from "~/interfaces/note";
+    import { draggableBlock, draggedToBlock } from "~/store";
     import Block from "./Block.svelte";
 
-    export let note: Note;
+    export let body: string;
     export let onChange: Function;
 
-    let lines: string[] = [];
+    $: lines = filterLines(body.split("\n"));
 
     beforeUpdate(() => {
-        lines = note.body
-            .split("\n")
-            .map((l) => l.trim())
-            .filter((l) => l != "");
+        body = filterLines(lines).join("\n");
+        onChange(body);
     });
 
-    $: {
-        lines = lines.map((l) => l.trim()).filter((l) => l != "");
-        onChange(lines.join("\n"));
-    }
+    const filterLines = (lines: string[]): string[] =>
+        lines.map((l) => l.trim()).filter((l) => l != "");
+
+    draggedToBlock.subscribe((draggedToIndex) => {
+        if (draggedToIndex != $draggableBlock) {
+            const newLines: string[] = [];
+
+            for (let i = 0; i < draggedToIndex; i++) {
+                if (i != $draggableBlock) newLines.push(lines[i]);
+            }
+
+            if (draggedToIndex > $draggableBlock) {
+                newLines.push(lines[draggedToIndex]);
+                newLines.push(lines[$draggableBlock]);
+            } else {
+                newLines.push(lines[$draggableBlock]);
+                newLines.push(lines[draggedToIndex]);
+            }
+
+            for (let i = draggedToIndex + 1; i < lines.length; i++) {
+                if (i != $draggableBlock) newLines.push(lines[i]);
+            }
+
+            lines = newLines;
+        }
+
+        $draggedToBlock = null;
+        $draggableBlock = null;
+    });
 </script>
 
 <div class="note-body">
-    {#each lines as line}
-        <Block bind:line />
+    {#each lines as line, index}
+        <Block bind:line {index} />
     {/each}
 </div>
 

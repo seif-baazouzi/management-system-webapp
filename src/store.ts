@@ -12,3 +12,5 @@ export const nextActive = writable(false);
 export const refreshPage = writable(false);
 
 export const draggableWorkspace = writable(null as Workspace);
+export const draggableBlock = writable(null as number);
+export const draggedToBlock = writable(null as number);

@@ -1,10 +1,13 @@
 <script lang="ts">
+    import { draggableBlock, draggedToBlock } from "~/store";
     import parseLine from "~/utils/parse-note-body";
     import Textarea from "../Textarea.svelte";
 
+    export let index: number;
     export let line: string;
-    let value = line;
-    let block = parseLine(line);
+
+    $: value = line;
+    $: block = parseLine(line);
 
     let editMode = false;
     function onPressEnter() {
@@ -20,8 +23,16 @@
 </script>
 
 {#if !editMode}
-    <svelte:element this={block.type} on:dblclick={() => (editMode = true)}>
-        {block.content}
+    <svelte:element
+        this={block.type}
+        on:dblclick={() => (editMode = true)}
+        draggable={true}
+        on:dragenter={() => {
+            if ($draggableBlock === null) $draggableBlock = index;
+        }}
+        on:dragover={(e) => e.preventDefault()}
+        on:drop={() => ($draggedToBlock = index)}
+        >{block.content}
     </svelte:element>
 {:else}
     <Textarea

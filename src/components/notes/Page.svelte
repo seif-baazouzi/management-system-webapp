@@ -18,6 +18,6 @@
     }
 </script>
 
-<NoteTitle bind:note onChange={updateNote} />
-<NoteBody bind:note onChange={updateNote} />
+<NoteTitle bind:title={note.title} onChange={updateNote} />
+<NoteBody bind:body={note.body} onChange={updateNote} />
 <AddBlock bind:body={note.body} onChange={updateNote} />
