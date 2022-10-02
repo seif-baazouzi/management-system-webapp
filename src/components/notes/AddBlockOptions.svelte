@@ -44,7 +44,11 @@
 {#if value === "/"}
     <div class="options" bind:this={options}>
         {#each list as { title, content }, index}
-            <div class="option {selected === index ? 'active' : ''}">
+            <div
+                on:mouseenter={() => (selected = index)}
+                on:click={() => (value = content)}
+                class="option {selected === index ? 'active' : ''}"
+            >
                 {title}
             </div>
         {/each}
