@@ -8,29 +8,33 @@
     import { workspacesList } from "~/store";
 
     import getLang from "~/langs/";
+    import type Workspace from "~/interfaces/workspace";
     const lang = getLang();
 
     const dispatch = createEventDispatcher();
     const close = () => dispatch("close");
 
-    export let workspaceID: string;
-    export let workspace = "";
+    export let selectedWorkspace: Workspace;
+
+    let workspace = selectedWorkspace.workspace;
     let errors: any = {};
 
     async function updateWorkspace(event: any) {
         event?.preventDefault();
 
         const res = await ajax.put(
-            `${workspacesService}/api/v1/workspaces/${workspaceID}`,
+            `${workspacesService}/api/v1/workspaces/${selectedWorkspace.workspaceID}`,
             null,
             {
                 workspace,
+                icon: selectedWorkspace.icon,
+                parentWorkspace: selectedWorkspace.parentWorkspace,
             }
         );
 
         if (res.message === "success") {
             $workspacesList = $workspacesList.map((w) => {
-                if (w.workspaceID === workspaceID) {
+                if (w.workspaceID === selectedWorkspace.workspaceID) {
                     w.workspace = workspace;
                 }
 

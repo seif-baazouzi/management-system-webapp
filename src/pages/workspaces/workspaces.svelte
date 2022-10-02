@@ -36,8 +36,9 @@
             `${workspacesService}/api/v1/workspaces/${workspace.workspaceID}`,
             null,
             {
-                workspace: workspace.workspace,
                 icon: newIcon,
+                workspace: workspace.workspace,
+                parentWorkspace: workspace.parentWorkspace,
             }
         );
 
@@ -111,8 +112,7 @@
 
 {#if popup === "edit"}
     <UpdateWorkspacePopup
-        workspaceID={params.workspaceID}
-        workspace={workspace?.workspace}
+        selectedWorkspace={workspace}
         on:close={() => (popup = null)}
     />
 {/if}
