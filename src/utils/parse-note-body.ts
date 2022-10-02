@@ -1,6 +1,6 @@
 import type Block from "~/interfaces/block";
 
-export const blockTypes = ["h1", "h2", "h3", "h4", "h5", "h6", "p"]
+export const blockTypes = ["h1", "h2", "h3", "h4", "h5", "h6", "p", "img"]
 
 export default function parseLine(line: string): Block {
     const index = line.indexOf(":")

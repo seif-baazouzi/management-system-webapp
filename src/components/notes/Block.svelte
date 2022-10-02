@@ -23,8 +23,8 @@
 </script>
 
 {#if !editMode}
-    <svelte:element
-        this={block.type}
+    <div
+        class="block"
         on:dblclick={() => (editMode = true)}
         draggable={true}
         on:dragenter={() => {
@@ -32,8 +32,13 @@
         }}
         on:dragover={(e) => e.preventDefault()}
         on:drop={() => ($draggedToBlock = index)}
-        >{block.content}
-    </svelte:element>
+    >
+        {#if block.type === "img"}
+            <img src={block.content} alt={block.content} />
+        {:else}
+            <svelte:element this={block.type}>{block.content} </svelte:element>
+        {/if}
+    </div>
 {:else}
     <Textarea
         bind:value
@@ -44,3 +49,16 @@
         style="display: block; font-size: 1rem; margin-bottom: 1rem"
     />
 {/if}
+
+<style>
+    .block > * {
+        margin-bottom: 0.75em;
+    }
+
+    img {
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: cover;
+        border-radius: 0.125rem;
+    }
+</style>

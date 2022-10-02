@@ -49,9 +49,3 @@
         <Block bind:line {index} />
     {/each}
 </div>
-
-<style>
-    .note-body :global(:is(h1, h2, h3, h4, h5, h6, p)) {
-        margin-bottom: 0.75em;
-    }
-</style>

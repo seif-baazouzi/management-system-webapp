@@ -12,6 +12,7 @@
         { title: "Header 5", content: "h5:content" },
         { title: "Header 6", content: "h6:content" },
         { title: "Paragraph", content: "p:content" },
+        { title: "Image", content: "img:url" },
     ];
 
     onMount(() => {
