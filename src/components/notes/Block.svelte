@@ -35,6 +35,8 @@
     >
         {#if block.type === "img"}
             <img src={block.content} alt={block.content} />
+        {:else if block.type === "a"}
+            <a href={block.content}>{block.content}</a>
         {:else}
             <svelte:element this={block.type}>{block.content} </svelte:element>
         {/if}
