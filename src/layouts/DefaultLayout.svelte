@@ -10,6 +10,9 @@
 
     onMount(() => {
         sidebarClosed = localStorage.getItem("sidebarClosed") === "true";
+        window.addEventListener("keypress", (event: any) => {
+            if (event.target === document.body && event.key === "B") toggle();
+        });
     });
 
     function toggle() {
