@@ -14,7 +14,7 @@ export default {
     delete: "Delete",
     todos: "Todos",
     notes: "Notes",
-    logs: "logs",
+    logs: "Logs",
     error404: "404 Error",
     workspaceNotFound: "Workspace not found.",
     pageNotFound: "Page not found",
@@ -35,4 +35,6 @@ export default {
     addNewNote: "Add new note",
     createNote: "CreateNote",
     deleteNoteMessage: "Are you sure you want yo delete this note!",
+    createLog: "CreateLog",
+    addNewLog: "Add new log"
 }

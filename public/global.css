@@ -203,7 +203,6 @@ button:is(.blue, .red):hover {
 .page-container h1 .icon {
 	font-size: 1.75rem;
 	display: inline-block;
-	transform: translateY(-25%);
 	margin-right: .25em;
 }
 

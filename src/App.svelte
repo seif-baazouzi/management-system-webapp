@@ -11,6 +11,7 @@
 	import Todos from "./pages/workspaces/todos.svelte";
 	import Notes from "./pages/workspaces/notes/notes-list.svelte";
 	import SingleNote from "./pages/workspaces/notes/single-note.svelte";
+	import Logs from "./pages/workspaces/logs.svelte";
 
 	const routes = {
 		"/": TodayTodos,
@@ -20,6 +21,7 @@
 		"/workspace/:workspaceID/todos": Todos,
 		"/workspace/:workspaceID/notes": Notes,
 		"/workspace/:workspaceID/notes/:noteID": SingleNote,
+		"/workspace/:workspaceID/logs": Logs,
 
 		"*": NotFound,
 	};

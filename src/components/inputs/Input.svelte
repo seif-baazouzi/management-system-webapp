@@ -3,7 +3,7 @@
 
     export let label = "";
     export let type = "text";
-    export let value = "";
+    export let value: string | number = "";
     export let error = null;
 </script>
 
@@ -14,6 +14,8 @@
         <input type="password" id={label} bind:value />
     {:else if type === "date"}
         <input type="date" id={label} bind:value />
+    {:else if type === "number"}
+        <input type="number" id={label} bind:value />
     {:else}
         <input type="text" id={label} bind:value />
     {/if}
