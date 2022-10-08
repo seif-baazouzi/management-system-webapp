@@ -17,6 +17,7 @@
             <div class="title">Description</div>
             <div class="title">Value</div>
             <div class="title">Date</div>
+            <div class="title" />
         </div>
         {#each logs as log}
             <SingleLog {log} />

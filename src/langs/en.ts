@@ -38,4 +38,5 @@ export default {
     createLog: "CreateLog",
     addNewLog: "Add new log",
     noLogsThisMonth: "There is no logs this month!",
+    editLog: "Edit log",
 }
