@@ -11,10 +11,11 @@
     import Month from "~/components/inputs/Month.svelte";
     import LogsList from "~/components/logs/List.svelte";
     import AddLogPopup from "~/popups/logs/Add.svelte";
+    import LogsCharts from "~/components/logs/Charts.svelte";
+    import type Log from "~/interfaces/log";
     import { formatMonth } from "~/utils";
 
     import getLang from "~/langs/";
-    import type Log from "~/interfaces/log";
     const lang = getLang();
 
     export let params: { workspaceID: string };
@@ -92,7 +93,8 @@
                         ? 'right: 0;'
                         : ''} z-index: 10;"
                 />
-                <div class="table">
+                <div class="content">
+                    <LogsCharts {logs} />
                     <LogsList {logs} />
                 </div>
             </div>
@@ -114,7 +116,7 @@
 {/if}
 
 <style>
-    .table {
+    .content {
         padding-top: 2rem;
     }
 </style>
