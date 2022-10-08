@@ -3,6 +3,7 @@
     import { rightToLeft } from "~/store";
 
     import UpdateLogPopup from "~/popups/logs/Update.svelte";
+    import DeleteLogPopup from "~/popups/logs/Delete.svelte";
 
     export let log: Log;
     let popup: string = null;
@@ -14,14 +15,21 @@
     <div class="content">{log.value}</div>
     <div class="content">{new Date(log.date).toDateString()}</div>
     <div class="content">
-        <span class="action blue" on:click={() => (popup = "update")}>edit</span
-        >
-        <span class="action red">delete</span>
+        <span class="action blue" on:click={() => (popup = "update")}
+            >edit
+        </span>
+        <span class="action red" on:click={() => (popup = "delete")}
+            >delete
+        </span>
     </div>
 </div>
 
 {#if popup === "update"}
     <UpdateLogPopup {log} on:close={() => (popup = null)} />
+{/if}
+
+{#if popup === "delete"}
+    <DeleteLogPopup {log} on:close={() => (popup = null)} />
 {/if}
 
 <style>
