@@ -36,5 +36,6 @@ export default {
     createNote: "CreateNote",
     deleteNoteMessage: "Are you sure you want yo delete this note!",
     createLog: "CreateLog",
-    addNewLog: "Add new log"
+    addNewLog: "Add new log",
+    noLogsThisMonth: "There is no logs this month!",
 }

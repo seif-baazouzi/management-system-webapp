@@ -7,13 +7,14 @@
     import type Workspace from "~/interfaces/workspace";
     import LinksChain from "~/components/LinksChain.svelte";
     import ajax from "~/utils/ajax";
-    import { todosService } from "~/config";
+    import { logsService } from "~/config";
     import Month from "~/components/inputs/Month.svelte";
-    import TodosList from "~/components/todos/List.svelte";
+    import LogsList from "~/components/logs/List.svelte";
     import AddLogPopup from "~/popups/logs/Add.svelte";
     import { formatMonth } from "~/utils";
 
     import getLang from "~/langs/";
+    import type Log from "~/interfaces/log";
     const lang = getLang();
 
     export let params: { workspaceID: string };
@@ -26,7 +27,7 @@
     });
 
     let month = formatMonth();
-    let todos = {};
+    let logs: Log[] = [];
 
     let popup = false;
 
@@ -46,10 +47,10 @@
 
     async function getTodos() {
         const res = await ajax.get(
-            `${todosService}/api/v1/todos/${params.workspaceID}/month/${month}`
+            `${logsService}/api/v1/logs/${params.workspaceID}/month/${month}`
         );
 
-        todos = res.todos;
+        logs = res.logs ?? [];
     }
 </script>
 
@@ -91,7 +92,9 @@
                         ? 'right: 0;'
                         : ''} z-index: 10;"
                 />
-                <!-- <TodosList {todos} /> -->
+                <div class="table">
+                    <LogsList {logs} />
+                </div>
             </div>
         {:else}
             <MessageBox
@@ -109,3 +112,9 @@
         on:close={() => (popup = false)}
     />
 {/if}
+
+<style>
+    .table {
+        padding-top: 2rem;
+    }
+</style>

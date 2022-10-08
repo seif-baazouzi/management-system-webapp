@@ -3,7 +3,7 @@
 
     import { refreshPage } from "~/store";
     import Input from "~/components/inputs/Input.svelte";
-    import { logsService, todosService } from "~/config";
+    import { logsService } from "~/config";
     import ajax from "~/utils/ajax";
     import Popup from "../Popup.svelte";
 
