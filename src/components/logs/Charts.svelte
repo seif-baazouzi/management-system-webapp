@@ -2,10 +2,14 @@
     import Chart from "svelte-frappe-charts";
 
     import type Log from "~/interfaces/log";
-    import { formatLogs } from "~/utils/format-logs";
+    import {
+        formatLogsForLineChart,
+        formatLogsForDonutChart,
+    } from "~/utils/format-logs";
 
     export let logs: Log[];
-    $: data = formatLogs(logs);
+    $: lineData = formatLogsForLineChart(logs);
+    $: donutData = formatLogsForDonutChart(logs);
 
     const lineOptions = {
         regionFill: 1,
@@ -13,5 +17,16 @@
 </script>
 
 {#if logs.length}
-    <Chart {data} {lineOptions} />
+    <div class="cart">
+        <Chart data={lineData} {lineOptions} type="line" />
+    </div>
+    <div class="cart">
+        <Chart data={donutData} type="donut" />
+    </div>
 {/if}
+
+<style>
+    .cart {
+        padding: 1rem 0;
+    }
+</style>

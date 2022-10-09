@@ -1,4 +1,3 @@
-import { validate_each_argument } from "svelte/internal";
 import type Log from "~/interfaces/log";
 
 function getDayLogs(selectedDay: number, logs: Log[]): Log[] {
@@ -8,7 +7,7 @@ function getDayLogs(selectedDay: number, logs: Log[]): Log[] {
     })
 }
 
-export function formatLogs(logs: Log[]) {
+export function formatLogsForLineChart(logs: Log[]) {
     const labels: string[] = [];
     for (let i = 1; i <= 31; i++) {
         labels[i - 1] = i.toString();
@@ -31,5 +30,26 @@ export function formatLogs(logs: Log[]) {
     return {
         labels,
         datasets,
+    };
+}
+
+export function formatLogsForDonutChart(logs: Log[]) {
+    const labels = [...new Set(logs.map(l => l.label))];
+
+    const values: number[] = [];
+    for (const label of labels) {
+        let sum: number = 0;
+        for (let i = 1; i <= 31; i++) {
+            const thisDayLogs = getDayLogs(i, logs);
+            const labelSum = thisDayLogs.filter(l => l.label === label).reduce((sum, l) => sum += l.value, 0);
+            sum += labelSum;
+        }
+
+        values.push(sum)
+    }
+
+    return {
+        labels,
+        datasets: [{ values }],
     };
 }
