@@ -59,6 +59,7 @@
     }
 
     .toggle-btn {
+        padding: 0.25rem;
         font-size: 1.5rem;
         cursor: pointer;
         transform: translateY(-0.0125em);

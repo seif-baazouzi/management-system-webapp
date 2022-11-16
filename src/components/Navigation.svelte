@@ -16,7 +16,7 @@
     }
 
     .arrow {
-        font-size: 0.75rem;
+        font-size: 1rem;
         padding: 0.125rem;
         cursor: pointer;
         color: var(--gray);
