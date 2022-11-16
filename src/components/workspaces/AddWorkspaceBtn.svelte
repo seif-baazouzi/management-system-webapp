@@ -29,7 +29,7 @@
         color: var(--gray);
         font-size: 0.75rem;
         font-weight: bold;
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 1rem 0.75rem;
         border-top: 0.025em solid var(--gray);
         cursor: pointer;
         user-select: none;
@@ -54,6 +54,7 @@
         color: var(--gray);
         font-weight: 200;
         margin-right: 0.25rem;
+        transform: translateY(0.125rem);
     }
 
     .add-workspace.revert span {
