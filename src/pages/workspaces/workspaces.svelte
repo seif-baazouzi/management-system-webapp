@@ -89,13 +89,13 @@
             <div class="page-content">
                 <div class="links">
                     <a href="#/workspace/{workspace.workspaceID}/todos"
-                        >{lang.todos}
+                        >📌 {lang.todos}
                     </a>
                     <a href="#/workspace/{workspace.workspaceID}/notes"
-                        >{lang.notes}
+                        >📝 {lang.notes}
                     </a>
                     <a href="#/workspace/{workspace.workspaceID}/logs"
-                        >{lang.logs}</a
+                        >📊 {lang.logs}</a
                     >
                 </div>
                 <Children workspaceID={workspace.workspaceID} />

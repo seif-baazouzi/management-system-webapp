@@ -207,7 +207,7 @@ button:is(.blue, .red):hover {
 }
 
 .page-content {
-	margin-top: 1rem;
+	margin: 2rem 0;
 	position: relative;
 }
 
