@@ -5,6 +5,7 @@
 
     import getLang from "~/langs/";
     import UpdateUsername from "~/components/settings/UpdateUsername.svelte";
+    import UpdatePassword from "~/components/settings/UpdatePassword.svelte";
     const lang = getLang();
 </script>
 
@@ -28,6 +29,7 @@
         <h1><span class="icon">⚙️</span> {lang.settings}</h1>
         <div class="settings">
             <UpdateUsername />
+            <UpdatePassword />
         </div>
     </div>
 </DefaultLayout>
