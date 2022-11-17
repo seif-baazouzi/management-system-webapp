@@ -4,6 +4,7 @@
     import { rightToLeft } from "~/store";
 
     import getLang from "~/langs/";
+    import UpdateUsername from "~/components/settings/UpdateUsername.svelte";
     const lang = getLang();
 </script>
 
@@ -25,5 +26,25 @@
 
     <div class="page-container {$rightToLeft ? 'revert' : ''}">
         <h1><span class="icon">⚙️</span> {lang.settings}</h1>
+        <div class="settings">
+            <UpdateUsername />
+        </div>
     </div>
 </DefaultLayout>
+
+<style>
+    .settings {
+        margin-top: 2rem;
+        border: 0.1rem solid var(--gray);
+        border-radius: 1rem;
+    }
+
+    .settings > :global(*) {
+        padding: 1rem;
+        cursor: pointer;
+    }
+
+    .settings > :global(*:not(:last-child)) {
+        border-bottom: 0.1rem solid var(--gray);
+    }
+</style>

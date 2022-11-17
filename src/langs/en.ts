@@ -41,4 +41,5 @@ export default {
     editLog: "Edit log",
     deleteLogMessage: "Are you sure you want yo delete this log!",
     settings: "Settings",
+    updateUsername: "Update Username"
 }
