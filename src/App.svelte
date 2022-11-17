@@ -12,11 +12,13 @@
 	import Notes from "./pages/workspaces/notes/notes-list.svelte";
 	import SingleNote from "./pages/workspaces/notes/single-note.svelte";
 	import Logs from "./pages/workspaces/logs.svelte";
+	import Settings from "./pages/settings.svelte";
 
 	const routes = {
 		"/": TodayTodos,
 		"/login": Login,
 		"/signup": Signup,
+		"/settings": Settings,
 		"/workspace/:workspaceID": Workspace,
 		"/workspace/:workspaceID/todos": Todos,
 		"/workspace/:workspaceID/notes": Notes,

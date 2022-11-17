@@ -40,4 +40,5 @@ export default {
     noLogsThisMonth: "There is no logs this month!",
     editLog: "Edit log",
     deleteLogMessage: "Are you sure you want yo delete this log!",
+    settings: "Settings",
 }
