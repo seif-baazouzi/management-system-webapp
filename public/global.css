@@ -27,6 +27,19 @@
 	--shadow: .0125rem .0125rem .075rem rgba(0, 0, 0, .25);
 }
 
+:root body.dark {
+	--white: #14171A;
+	--black: #F5F8FA;
+	--light-gray: #22272D;
+	--gray: #a1a09c;
+	--dark-gray: #CCCFD0;
+	--red: #ca3e47;
+	--blue: #4f4fed;
+	--yellow: #ebc999;
+	--popup-bg: rgba(0, 0, 0, .75);
+	--shadow: .0125rem .0125rem .075rem rgba(255, 255, 255, .25);
+}
+
 /* reset styles */
 
 input,

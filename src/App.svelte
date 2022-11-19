@@ -61,6 +61,12 @@
 		$prevActive = backwardStack.length != 0;
 		$nextActive = forwardStack.length != 0;
 	}
+
+	// set dark mode
+	const isDarkMode = JSON.parse(localStorage.getItem("dark-mode")) ?? false;
+	if (isDarkMode) {
+		document.body.classList.add("dark");
+	}
 </script>
 
 <Router {routes} on:routeLoaded={routingHandler} />

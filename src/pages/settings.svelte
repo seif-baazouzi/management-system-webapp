@@ -7,6 +7,7 @@
     import UpdateUsername from "~/components/settings/UpdateUsername.svelte";
     import UpdatePassword from "~/components/settings/UpdatePassword.svelte";
     import Logout from "~/components/settings/Logout.svelte";
+    import DarkModeSwitcher from "~/components/settings/DarkModeSwitcher.svelte";
     const lang = getLang();
 </script>
 
@@ -31,6 +32,7 @@
         <div class="settings">
             <UpdateUsername />
             <UpdatePassword />
+            <DarkModeSwitcher />
             <Logout />
         </div>
     </div>
