@@ -1,4 +1,6 @@
 <script>
+    import Switch from "../Switch.svelte";
+
     let checked = JSON.parse(localStorage.getItem("dark-mode")) ?? false;
 
     function setMode() {
@@ -13,7 +15,8 @@
 
 <div>
     <h5>Switch dark mode</h5>
-    <input type="checkbox" bind:checked on:change={setMode} />
+    <Switch bind:checked onChange={setMode} />
+    <!-- <input type="checkbox" bind:checked on:change={setMode} /> -->
 </div>
 
 <style>
