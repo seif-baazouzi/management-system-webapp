@@ -6,6 +6,7 @@
     import getLang from "~/langs/";
     import UpdateUsername from "~/components/settings/UpdateUsername.svelte";
     import UpdatePassword from "~/components/settings/UpdatePassword.svelte";
+    import Logout from "~/components/settings/Logout.svelte";
     const lang = getLang();
 </script>
 
@@ -30,6 +31,7 @@
         <div class="settings">
             <UpdateUsername />
             <UpdatePassword />
+            <Logout />
         </div>
     </div>
 </DefaultLayout>
