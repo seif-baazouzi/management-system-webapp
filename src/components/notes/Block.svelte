@@ -37,6 +37,10 @@
             <img src={block.content} alt={block.content} />
         {:else if block.type === "a"}
             <a href={block.content}>{block.content}</a>
+        {:else if block.type === "iframe"}
+            <div class="iframe-container">
+                <iframe src={block.content} title={block.content} />
+            </div>
         {:else}
             <svelte:element this={block.type}>{block.content} </svelte:element>
         {/if}
@@ -62,5 +66,16 @@
         max-height: 90vh;
         object-fit: cover;
         border-radius: 0.125rem;
+    }
+
+    .iframe-container {
+        padding: 1rem;
+        border-radius: 0.25rem;
+        background: var(--light-gray);
+    }
+
+    .iframe-container iframe {
+        width: 100%;
+        height: 80vh;
     }
 </style>

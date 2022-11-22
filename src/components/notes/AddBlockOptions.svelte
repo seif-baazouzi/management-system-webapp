@@ -14,6 +14,7 @@
         { title: "Paragraph", content: "p:content" },
         { title: "Image", content: "img:url" },
         { title: "Link", content: "a:link" },
+        { title: "Iframe", content: "iframe:url" },
     ];
 
     onMount(() => {
