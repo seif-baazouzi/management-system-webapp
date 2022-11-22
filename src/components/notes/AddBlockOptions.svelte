@@ -15,6 +15,7 @@
         { title: "Image", content: "img:url" },
         { title: "Link", content: "a:link" },
         { title: "Iframe", content: "iframe:url" },
+        { title: "List Item", content: "li:content" },
     ];
 
     onMount(() => {

@@ -78,4 +78,8 @@
         width: 100%;
         height: 80vh;
     }
+
+    .block :global(li) {
+        margin-left: 1rem;
+    }
 </style>
