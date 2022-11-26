@@ -43,4 +43,6 @@ export default {
     settings: "Settings",
     updateUsername: "Update Username",
     updatePassword: "Update Password",
+    remainingTodos: "Remaining Todos",
+    noRemainingTodos: "No Remaining Todos",
 }

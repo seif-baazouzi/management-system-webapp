@@ -11,6 +11,7 @@
     <div class="content">
         <div class="links">
             <a href="#/"><span>📅</span>{lang.todayTodos}</a>
+            <a href="#/remaining-todos"><span>⌛</span>{lang.remainingTodos}</a>
             <a href="#/settings"><span>⚙️</span>{lang.settings}</a>
         </div>
         <Workspaces />

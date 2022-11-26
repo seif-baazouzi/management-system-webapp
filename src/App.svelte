@@ -13,9 +13,11 @@
 	import SingleNote from "./pages/workspaces/notes/single-note.svelte";
 	import Logs from "./pages/workspaces/logs.svelte";
 	import Settings from "./pages/settings.svelte";
+	import RemainingTodos from "./pages/remaining-todos.svelte";
 
 	const routes = {
 		"/": TodayTodos,
+		"/remaining-todos": RemainingTodos,
 		"/login": Login,
 		"/signup": Signup,
 		"/settings": Settings,

@@ -24,13 +24,13 @@
     });
 
     async function getTodayTodos() {
-        const res = await ajax.get(`${todosService}/api/v1/todos/today`);
+        const res = await ajax.get(`${todosService}/api/v1/todos/remaining`);
         todos = res.todos ?? [];
     }
 </script>
 
 <svelte:head>
-    <title>${lang.todayTodos}</title>
+    <title>${lang.remainingTodos}</title>
 </svelte:head>
 
 <DefaultLayout showMenu={false}>
@@ -39,14 +39,14 @@
             links={[
                 {
                     link: `#/`,
-                    content: `📅 ${lang.todayTodos}`,
+                    content: `⌛ ${lang.remainingTodos}`,
                 },
             ]}
         />
     </div>
 
     <div class="page-container {$rightToLeft ? 'revert' : ''}">
-        <h1><span class="icon">📅</span> {lang.todayTodos}</h1>
+        <h1><span class="icon">⌛</span> {lang.remainingTodos}</h1>
         {#if todos.length}
             <div class="todos">
                 {#each todos as todo}
@@ -54,7 +54,7 @@
                 {/each}
             </div>
         {:else}
-            <MessageBox icon="🧹" title={lang.noTodosToday} />
+            <MessageBox icon="🧹" title={lang.noRemainingTodos} />
         {/if}
     </div>
 </DefaultLayout>
